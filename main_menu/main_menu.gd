@@ -14,8 +14,12 @@ func _on_ideophobia_ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if state == eGlobalGameState.e_ggs_on_settings:
+	if state == eGlobalGameState.e_ggs_on_main_menu:
+		$Camera2D.position = $Camera2D.MAIN_MENU_POS
+		
+	elif state == eGlobalGameState.e_ggs_on_settings:
 		$Camera2D.position = $Camera2D.SETTINGS_MENU_POS
 		
 	elif state == eGlobalGameState.e_ggs_on_credits:
 		$Camera2D.position = $Camera2D.CREDITS_SCREEN_POS
+		

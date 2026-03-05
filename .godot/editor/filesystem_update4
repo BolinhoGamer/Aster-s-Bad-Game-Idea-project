@@ -1,0 +1,5 @@
+res://node_2d.tscn
+res://main_menu/menu_settings_button.gd
+res://main_menu/camera_2d.gd
+res://main_menu/main_menu.gd
+res://main_menu/menu_return_button.gd
