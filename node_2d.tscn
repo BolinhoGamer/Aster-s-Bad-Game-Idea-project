@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bbt714o4nw8fy"]
 
 [ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_epypp"]
-[ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://main_menu/icon.svg" id="1_wtcfe"]
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://main_menu/menu_button_super.gd" id="2_0e48y"]
 [ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://main_menu/menu_settings_button.gd" id="4_0hol4"]
 [ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://main_menu/menu_return_button.gd" id="4_4d7sh"]
@@ -9,15 +8,11 @@
 [ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_kdubu"]
 [ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_rj586"]
 [ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="9_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://chsbyx6y07co" path="res://assets/images/MainMenuArtFrame1.png" id="10_hqns4"]
 [ext_resource type="Script" uid="uid://dfuvyfprc1dyu" path="res://settings.gd" id="10_ir8iy"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_epypp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(313, 347)
-scale = Vector2(3.6875, 3.6875)
-texture = ExtResource("1_wtcfe")
 
 [node name="MenuPlayButton" type="Button" parent="."]
 offset_left = 820.0
@@ -127,6 +122,12 @@ offset_top = -41.0
 offset_right = 209.0
 offset_bottom = -1.0
 text = "Master Volume"
+
+[node name="MainMenuArtFrame1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.3945206, 0.3946407)
+texture = ExtResource("10_hqns4")
 
 [connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
