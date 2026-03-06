@@ -1,22 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://bls2nwi65cm7k"]
+[gd_scene load_steps=14 format=3 uid="uid://bls2nwi65cm7k"]
 
 [ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_epypp"]
-[ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://main_menu/icon.svg" id="1_wtcfe"]
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://main_menu/menu_button_super.gd" id="2_0e48y"]
 [ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://main_menu/menu_settings_button.gd" id="4_0hol4"]
 [ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://main_menu/menu_return_button.gd" id="4_4d7sh"]
 [ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://main_menu/menu_credits_button.gd" id="5_q6r6c"]
 [ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_kdubu"]
-[ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://sounds/Ideophobia.ogg" id="7_d21ai"]
+[ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="7_d21ai"]
+[ext_resource type="Script" uid="uid://c748ka31vrej1" path="res://main_menu/audio_setting.gd" id="7_hqns4"]
+[ext_resource type="Script" uid="uid://bnggtc5wd6qrv" path="res://main_menu/settings_apply_button.gd" id="7_ir8iy"]
 [ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_rj586"]
+[ext_resource type="Texture2D" uid="uid://chsbyx6y07co" path="res://assets/images/MainMenuArtFrame1.png" id="11_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://b24eehtwccteq" path="res://assets/images/MainMenuArtFrame2.png" id="12_0h7mo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nr8wp"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("11_x0ka3")
+}, {
+"duration": 2.0,
+"texture": ExtResource("12_0h7mo")
+}],
+"loop": true,
+"name": &"main_menu_background",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_epypp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(313, 347)
-scale = Vector2(3.6875, 3.6875)
-texture = ExtResource("1_wtcfe")
 
 [node name="MenuPlayButton" type="Button" parent="."]
 offset_left = 820.0
@@ -72,16 +89,70 @@ pivot_offset = Vector2(90, 35)
 text = "QUIT"
 script = ExtResource("6_kdubu")
 
+[node name="AudioSetting" type="VBoxContainer" parent="."]
+offset_left = 1459.0
+offset_top = 152.0
+offset_right = 1909.0
+offset_bottom = 502.0
+size_flags_horizontal = 8
+script = ExtResource("7_hqns4")
+metadata/_edit_use_anchors_ = true
+
+[node name="MasterSoundLabel" type="RichTextLabel" parent="AudioSetting"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "master sound"
+fit_content = true
+
+[node name="MasterSoundSlider" type="HSlider" parent="AudioSetting"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.02
+
+[node name="MusicLabel" type="RichTextLabel" parent="AudioSetting"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "music"
+fit_content = true
+
+[node name="MusicSlider" type="HSlider" parent="AudioSetting"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.02
+
+[node name="SFXlabel" type="RichTextLabel" parent="AudioSetting"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SFX"
+fit_content = true
+
+[node name="SFXSlider" type="HSlider" parent="AudioSetting"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.02
+
+[node name="SettingsApplyButton2" type="Button" parent="."]
+offset_left = 1590.0
+offset_top = 546.0
+offset_right = 1786.0
+offset_bottom = 616.0
+pivot_offset = Vector2(90, 35)
+text = "APPLY"
+script = ExtResource("7_ir8iy")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 124.000015
-offset_top = 16.000002
-offset_right = 504.0
-offset_bottom = 107.0
+offset_left = 71.0
+offset_top = 9.0
+offset_right = 451.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 50
@@ -92,6 +163,7 @@ vertical_alignment = 1
 [node name="Ideophobia" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(580, 354)
 stream = ExtResource("7_d21ai")
+bus = &"Music"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ideophobia"]
 
@@ -100,4 +172,16 @@ position = Vector2(576, 324)
 position_smoothing_enabled = true
 script = ExtResource("8_rj586")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(575.99994, 324)
+scale = Vector2(0.39452052, 0.39464068)
+sprite_frames = SubResource("SpriteFrames_nr8wp")
+animation = &"main_menu_background"
+autoplay = "main_menu_background"
+frame_progress = 0.5600072
+
+[connection signal="mouse_exited" from="AudioSetting/MasterSoundSlider" to="AudioSetting" method="_on_master_sound_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioSetting/MusicSlider" to="AudioSetting" method="_on_music_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioSetting/SFXSlider" to="AudioSetting" method="_on_sfx_slider_mouse_exited"]
 [connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]

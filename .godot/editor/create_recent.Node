@@ -1,1 +1,6 @@
+AnimatedSprite2D
+RichTextLabel
+HSlider
+VBoxContainer
+AnimationPlayer
 Node2D
