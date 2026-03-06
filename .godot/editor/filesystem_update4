@@ -1,8 +1,5 @@
 res://node_2d.tscn
+res://settings.gd
 res://main_menu/main_menu.gd
-res://master_sound_slider.gd
-res://main_menu/settings_apply_button.gd
-res://main_menu/music_slider.gd
-res://main_menu/mouse_sensitivity_slider.gd
-res://default_bus_layout.tres
-res://main_menu/audio_setting.gd
+res://node_3d.tscn
+res://node_3d.gd

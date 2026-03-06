@@ -1,6 +1,10 @@
-AnimatedSprite2D
+AnimationPlayer
+AnimationTree
+Camera3D
+Sprite3D
 RichTextLabel
 HSlider
+Control
+AnimatedSprite2D
 VBoxContainer
-AnimationPlayer
 Node2D

@@ -11,18 +11,35 @@ config_version=5
 [application]
 
 config/name="Novo Projeto de Jogo"
-run/main_scene="uid://bls2nwi65cm7k"
+run/main_scene="uid://bbt714o4nw8fy"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://main_menu/icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://assets/sounds/default_bus_layout.tres"
+buses/default_bus_layout="uid://dyxtp740c3gs4"
+
+[autoload]
+
+GlobalScript="*res://global_script.gd"
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[input]
+
+A={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+]
+}
+S={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+]
+}
 
 [rendering]
 

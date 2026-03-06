@@ -13,7 +13,7 @@ func _on_ideophobia_ready() -> void:
 	$Ideophobia.play()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if state == eGlobalGameState.e_ggs_on_main_menu:
 		$Camera2D.position = $Camera2D.MAIN_MENU_POS
 		
