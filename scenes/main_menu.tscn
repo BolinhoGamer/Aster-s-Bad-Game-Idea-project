@@ -1,18 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbt714o4nw8fy"]
+[gd_scene load_steps=13 format=3 uid="uid://bbt714o4nw8fy"]
 
-[ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_epypp"]
-[ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://main_menu/menu_button_super.gd" id="2_0e48y"]
-[ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://main_menu/menu_settings_button.gd" id="4_0hol4"]
-[ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://main_menu/menu_return_button.gd" id="4_4d7sh"]
-[ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://main_menu/menu_credits_button.gd" id="5_q6r6c"]
-[ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_kdubu"]
-[ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_rj586"]
-[ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="9_ir8iy"]
-[ext_resource type="Texture2D" uid="uid://chsbyx6y07co" path="res://assets/images/MainMenuArtFrame1.png" id="10_hqns4"]
-[ext_resource type="Script" uid="uid://dfuvyfprc1dyu" path="res://settings.gd" id="10_ir8iy"]
+[ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_5dd4i"]
+[ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://main_menu/menu_play_button.gd" id="2_lgwnu"]
+[ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://main_menu/menu_credits_button.gd" id="3_flqon"]
+[ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://main_menu/menu_return_button.gd" id="4_rcqid"]
+[ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://main_menu/menu_settings_button.gd" id="5_1ajci"]
+[ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_7b55j"]
+[ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="7_5pajh"]
+[ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_j7ex8"]
+[ext_resource type="Script" uid="uid://dfuvyfprc1dyu" path="res://settings.gd" id="9_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://chsbyx6y07co" path="res://assets/images/MainMenuArtFrame1.png" id="10_hstxw"]
+[ext_resource type="Texture2D" uid="uid://b24eehtwccteq" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_flqon"]
+frames = 2
+frame_0/texture = ExtResource("10_hstxw")
+frame_1/texture = ExtResource("11_lgwnu")
+frame_1/duration = 1.0
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_epypp")
+script = ExtResource("1_5dd4i")
 
 [node name="MenuPlayButton" type="Button" parent="."]
 offset_left = 820.0
@@ -21,7 +28,7 @@ offset_right = 1000.0
 offset_bottom = 258.0
 pivot_offset = Vector2(90, 35)
 text = "DAY 1"
-script = ExtResource("2_0e48y")
+script = ExtResource("2_lgwnu")
 
 [node name="MenuCreditsButton" type="Button" parent="."]
 offset_left = 820.0
@@ -30,7 +37,7 @@ offset_right = 1000.0
 offset_bottom = 458.0
 pivot_offset = Vector2(90, 35)
 text = "CREDITS"
-script = ExtResource("5_q6r6c")
+script = ExtResource("3_flqon")
 
 [node name="MenuCreditsReturnButton2" type="Button" parent="."]
 offset_left = 26.0
@@ -39,7 +46,7 @@ offset_right = 222.0
 offset_bottom = 746.0
 pivot_offset = Vector2(90, 35)
 text = "RETURN TO MAIN MENU"
-script = ExtResource("4_4d7sh")
+script = ExtResource("4_rcqid")
 
 [node name="MenuSettingsButton" type="Button" parent="."]
 offset_left = 820.0
@@ -48,7 +55,7 @@ offset_right = 1000.0
 offset_bottom = 358.0
 pivot_offset = Vector2(90, 35)
 text = "OPTIONS"
-script = ExtResource("4_0hol4")
+script = ExtResource("5_1ajci")
 
 [node name="MenuQuitButton" type="Button" parent="."]
 offset_left = 820.0
@@ -57,7 +64,7 @@ offset_right = 1000.0
 offset_bottom = 558.0
 pivot_offset = Vector2(90, 35)
 text = "QUIT"
-script = ExtResource("6_kdubu")
+script = ExtResource("6_7b55j")
 
 [node name="MenuSettingsReturnButton" type="Button" parent="."]
 offset_left = 1174.0
@@ -66,7 +73,7 @@ offset_right = 1370.0
 offset_bottom = 89.0
 pivot_offset = Vector2(90, 35)
 text = "RETURN TO MAIN MENU"
-script = ExtResource("4_4d7sh")
+script = ExtResource("4_rcqid")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchors_preset = 8
@@ -89,13 +96,13 @@ vertical_alignment = 1
 position = Vector2(576, 324)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ideophobia"]
-stream = ExtResource("9_ir8iy")
+stream = ExtResource("7_5pajh")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
-script = ExtResource("8_rj586")
+script = ExtResource("8_j7ex8")
 
 [node name="Settings" type="Control" parent="."]
 layout_mode = 3
@@ -104,7 +111,7 @@ offset_left = 1152.0
 offset_right = 2304.0
 offset_bottom = 648.0
 mouse_filter = 2
-script = ExtResource("10_ir8iy")
+script = ExtResource("9_a8gd2")
 
 [node name="VolumeSlider" type="HSlider" parent="Settings"]
 layout_mode = 0
@@ -127,7 +134,7 @@ text = "Master Volume"
 z_index = -1
 position = Vector2(576, 324)
 scale = Vector2(0.3945206, 0.3946407)
-texture = ExtResource("10_hqns4")
+texture = SubResource("AnimatedTexture_flqon")
 
 [connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
