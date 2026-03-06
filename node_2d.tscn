@@ -123,7 +123,7 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Master Volume"
 
-[node name="MainMenuArtFrame1" type="Sprite2D" parent="."]
+[node name="MainMenuArt" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(576, 324)
 scale = Vector2(0.3945206, 0.3946407)
