@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://bbt714o4nw8fy"]
 
 [ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://cww3yym6y6b7e" path="res://assets/images/start.png" id="2_7b55j"]
 [ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://main_menu/menu_play_button.gd" id="2_lgwnu"]
 [ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://main_menu/menu_credits_button.gd" id="3_flqon"]
+[ext_resource type="Texture2D" uid="uid://dwt8waxbn8v0g" path="res://assets/images/credits.png" id="4_5pajh"]
 [ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://main_menu/menu_return_button.gd" id="4_rcqid"]
 [ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://main_menu/menu_settings_button.gd" id="5_1ajci"]
 [ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_7b55j"]
 [ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="7_5pajh"]
+[ext_resource type="Texture2D" uid="uid://cj6xxu6fb201j" path="res://assets/images/options.png" id="7_j7ex8"]
 [ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_j7ex8"]
-[ext_resource type="Texture2D" uid="uid://chsbyx6y07co" path="res://assets/images/MainMenuArtFrame1.png" id="10_hstxw"]
-[ext_resource type="Texture2D" uid="uid://b24eehtwccteq" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://c7rq2kydold5o" path="res://assets/images/quit.png" id="9_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://clo2y2u5c2cih" path="res://assets/images/MainMenuArtFrame1.png" id="10_hstxw"]
+[ext_resource type="Texture2D" uid="uid://oy51dvc11oe0" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://cshg0ixxv7df0" path="res://assets/images/menu_background.png" id="12_flqon"]
 
 [sub_resource type="GDScript" id="GDScript_lgwnu"]
@@ -38,7 +42,7 @@ offset_top = 188.0
 offset_right = 1000.0
 offset_bottom = 258.0
 pivot_offset = Vector2(90, 35)
-text = "DAY 1"
+icon = ExtResource("2_7b55j")
 script = ExtResource("2_lgwnu")
 
 [node name="MenuCreditsButton" type="Button" parent="." unique_id=2075232248]
@@ -47,7 +51,7 @@ offset_top = 388.0
 offset_right = 1000.0
 offset_bottom = 458.0
 pivot_offset = Vector2(90, 35)
-text = "CREDITS"
+icon = ExtResource("4_5pajh")
 script = ExtResource("3_flqon")
 
 [node name="MenuCreditsReturnButton2" type="Button" parent="." unique_id=370619347]
@@ -65,16 +69,16 @@ offset_top = 288.0
 offset_right = 1000.0
 offset_bottom = 358.0
 pivot_offset = Vector2(90, 35)
-text = "OPTIONS"
+icon = ExtResource("7_j7ex8")
 script = ExtResource("5_1ajci")
 
 [node name="MenuQuitButton" type="Button" parent="." unique_id=743436300]
-offset_left = 820.0
-offset_top = 488.0
-offset_right = 1000.0
-offset_bottom = 558.0
+offset_left = 980.0
+offset_top = 555.0
+offset_right = 1168.0
+offset_bottom = 633.0
 pivot_offset = Vector2(90, 35)
-text = "QUIT"
+icon = ExtResource("9_a8gd2")
 script = ExtResource("6_7b55j")
 
 [node name="MenuSettingsReturnButton" type="Button" parent="." unique_id=1296588268]
@@ -85,23 +89,6 @@ offset_bottom = 89.0
 pivot_offset = Vector2(90, 35)
 text = "RETURN TO MAIN MENU"
 script = ExtResource("4_rcqid")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=462794795]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 124.000015
-offset_top = 16.000002
-offset_right = 504.0
-offset_bottom = 107.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 50
-text = "An Odd Shift at"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Ideophobia" type="AudioStreamPlayer2D" parent="." unique_id=1482521981]
 position = Vector2(576, 324)
@@ -164,8 +151,8 @@ text = "Mouse Sensetivity"
 
 [node name="MainMenuArt" type="Sprite2D" parent="." unique_id=645314722]
 z_index = -1
-position = Vector2(576, 324)
-scale = Vector2(0.3945206, 0.3946407)
+position = Vector2(577.7774, 325.00006)
+scale = Vector2(0.6053713, 0.6055556)
 texture = SubResource("AnimatedTexture_flqon")
 
 [node name="MainMenuArt2" type="Sprite2D" parent="." unique_id=873807806]
