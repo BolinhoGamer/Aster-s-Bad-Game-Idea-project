@@ -12,22 +12,45 @@ enum events{
 	default
 }
 
-var last_event = null
+var last_event = events.desk
+
+
+func go_to_desk():
+	if last_event == events.customers:
+		$AnimationPlayer.play("customers_to_desk_new")
+	
+	elif last_event == events.default:
+		$AnimationPlayer.play("default_to_desk")
+
+
+func go_to_customers():
+	if last_event == events.desk:
+		$AnimationPlayer.play("desk_to_customers_new")
+	
+	elif last_event == events.default:
+		$AnimationPlayer.play("default_to_customers")
+
+
+func go_to_default():
+	if last_event == events.desk:
+		$AnimationPlayer.play("desk_to_default")
+	
+	elif last_event == events.customers:
+		$AnimationPlayer.play("customers_to_default")
+
 
 func _input(event: InputEvent) -> void:
 	# Only accepts inputs if the camera is stopped, so it doesn't snaps
 	# brutally to other position in the middle of the animation
 	if not $AnimationPlayer.is_playing():
 		if event.is_action("A") and last_event != events.customers:
-			$AnimationPlayer.play("desk_to_customers_new")
+			go_to_customers()
 			last_event = events.customers
 
-		# FIXME: Figure out how to switch "S" to "D"
-		elif event.is_action("S") and last_event != events.desk and last_event != null:
-			$AnimationPlayer.play("customers_to_desk_new")
+		elif event.is_action("D") and last_event != events.desk:
+			go_to_desk()
 			last_event = events.desk
 		
-		# TODO: Change to the default view with "S"
-		elif false:
-			#$AnimationPlayer.play()
+		elif event.is_action("S") and last_event != events.default:
+			go_to_default()
 			last_event = events.default
