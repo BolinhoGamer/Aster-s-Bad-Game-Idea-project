@@ -30,6 +30,23 @@ tracks/1/keys = {
 "values": [Vector3(0, 1.5707964, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_din8e"]
+resource_name = "customers_to_default"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-1.235, 1.629, 0), Vector3(0, 1.629, -1.095)]
+}
+
 [sub_resource type="Animation" id="Animation_wc5p8"]
 resource_name = "customers_to_desk"
 length = 0.4
@@ -73,6 +90,40 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2, 1),
 "update": 0,
 "values": [Vector3(-1.2349823, 1.6294913, 0), Vector3(0, 1.629, -1.095), Vector3(-1.235, 1.629, -2.7)]
+}
+
+[sub_resource type="Animation" id="Animation_4bh5q"]
+resource_name = "default_to_customers"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 1.629, -1.095), Vector3(-1.235, 1.629, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ocj2s"]
+resource_name = "default_to_desk"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 1.629, -1.095), Vector3(-1.235, 1.629, -2.7)]
 }
 
 [sub_resource type="Animation" id="Animation_a0tk4"]
@@ -120,13 +171,34 @@ tracks/0/keys = {
 "values": [Vector3(-1.235, 1.629, -2.7), Vector3(0, 1.629, -1.025), Vector3(-1.235, 1.629, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ct7aa"]
+resource_name = "desk_to_default"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-1.235, 1.629, -2.7), Vector3(0, 1.629, -1.095)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jka67"]
 _data = {
 &"RESET": SubResource("Animation_r3fl7"),
+&"customers_to_default": SubResource("Animation_din8e"),
 &"customers_to_desk": SubResource("Animation_wc5p8"),
 &"customers_to_desk_new": SubResource("Animation_00tan"),
+&"default_to_customers": SubResource("Animation_4bh5q"),
+&"default_to_desk": SubResource("Animation_ocj2s"),
 &"desk_to_customers": SubResource("Animation_a0tk4"),
-&"desk_to_customers_new": SubResource("Animation_l1v76")
+&"desk_to_customers_new": SubResource("Animation_l1v76"),
+&"desk_to_default": SubResource("Animation_ct7aa")
 }
 
 [node name="Node3D" type="Node3D" unique_id=1458901737]

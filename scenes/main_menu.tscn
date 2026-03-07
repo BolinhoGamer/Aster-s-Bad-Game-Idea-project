@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbt714o4nw8fy"]
+[gd_scene format=3 uid="uid://bbt714o4nw8fy"]
 
 [ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_5dd4i"]
 [ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://main_menu/menu_play_button.gd" id="2_lgwnu"]
@@ -29,10 +29,10 @@ frame_0/texture = ExtResource("10_hstxw")
 frame_1/texture = ExtResource("11_lgwnu")
 frame_1/duration = 1.0
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=1095926161]
 script = ExtResource("1_5dd4i")
 
-[node name="MenuPlayButton" type="Button" parent="."]
+[node name="MenuPlayButton" type="Button" parent="." unique_id=931199454]
 offset_left = 820.0
 offset_top = 188.0
 offset_right = 1000.0
@@ -41,7 +41,7 @@ pivot_offset = Vector2(90, 35)
 text = "DAY 1"
 script = ExtResource("2_lgwnu")
 
-[node name="MenuCreditsButton" type="Button" parent="."]
+[node name="MenuCreditsButton" type="Button" parent="." unique_id=2075232248]
 offset_left = 820.0
 offset_top = 388.0
 offset_right = 1000.0
@@ -50,16 +50,16 @@ pivot_offset = Vector2(90, 35)
 text = "CREDITS"
 script = ExtResource("3_flqon")
 
-[node name="MenuCreditsReturnButton2" type="Button" parent="."]
-offset_left = 26.0
+[node name="MenuCreditsReturnButton2" type="Button" parent="." unique_id=370619347]
+offset_left = 55.0
 offset_top = 676.0
-offset_right = 222.0
+offset_right = 251.0
 offset_bottom = 746.0
 pivot_offset = Vector2(90, 35)
 text = "RETURN TO MAIN MENU"
 script = ExtResource("4_rcqid")
 
-[node name="MenuSettingsButton" type="Button" parent="."]
+[node name="MenuSettingsButton" type="Button" parent="." unique_id=351627984]
 offset_left = 820.0
 offset_top = 288.0
 offset_right = 1000.0
@@ -68,7 +68,7 @@ pivot_offset = Vector2(90, 35)
 text = "OPTIONS"
 script = ExtResource("5_1ajci")
 
-[node name="MenuQuitButton" type="Button" parent="."]
+[node name="MenuQuitButton" type="Button" parent="." unique_id=743436300]
 offset_left = 820.0
 offset_top = 488.0
 offset_right = 1000.0
@@ -77,16 +77,16 @@ pivot_offset = Vector2(90, 35)
 text = "QUIT"
 script = ExtResource("6_7b55j")
 
-[node name="MenuSettingsReturnButton" type="Button" parent="."]
-offset_left = 1174.0
+[node name="MenuSettingsReturnButton" type="Button" parent="." unique_id=1296588268]
+offset_left = 1186.0
 offset_top = 19.0
-offset_right = 1370.0
+offset_right = 1382.0
 offset_bottom = 89.0
 pivot_offset = Vector2(90, 35)
 text = "RETURN TO MAIN MENU"
 script = ExtResource("4_rcqid")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=462794795]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -103,19 +103,19 @@ text = "An Odd Shift at"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ideophobia" type="AudioStreamPlayer2D" parent="."]
+[node name="Ideophobia" type="AudioStreamPlayer2D" parent="." unique_id=1482521981]
 position = Vector2(576, 324)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ideophobia"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ideophobia" unique_id=1036074711]
 stream = ExtResource("7_5pajh")
 autoplay = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2060040920]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
 script = ExtResource("8_j7ex8")
 
-[node name="Settings" type="Control" parent="."]
+[node name="Settings" type="Control" parent="." unique_id=1490085233]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1152.0
@@ -124,7 +124,7 @@ offset_bottom = 648.0
 mouse_filter = 2
 script = SubResource("GDScript_lgwnu")
 
-[node name="VolumeSlider" type="HSlider" parent="Settings"]
+[node name="VolumeSlider" type="HSlider" parent="Settings" unique_id=350741629]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 216.0
@@ -134,7 +134,7 @@ min_value = -20.0
 max_value = 10.0
 value = -5.0
 
-[node name="VolumeLabel" type="RichTextLabel" parent="Settings/VolumeSlider"]
+[node name="VolumeLabel" type="RichTextLabel" parent="Settings/VolumeSlider" unique_id=793687674]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -142,7 +142,7 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Master Volume"
 
-[node name="MouseSensSlider" type="HSlider" parent="Settings"]
+[node name="MouseSensSlider" type="HSlider" parent="Settings" unique_id=1399210919]
 layout_direction = 4
 layout_mode = 0
 offset_left = 683.0
@@ -154,7 +154,7 @@ max_value = 3.0
 step = 0.0
 value = 0.1
 
-[node name="MouseSensLabel" type="RichTextLabel" parent="Settings/MouseSensSlider"]
+[node name="MouseSensLabel" type="RichTextLabel" parent="Settings/MouseSensSlider" unique_id=465868031]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -162,19 +162,19 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Mouse Sensetivity"
 
-[node name="MainMenuArt" type="Sprite2D" parent="."]
+[node name="MainMenuArt" type="Sprite2D" parent="." unique_id=645314722]
 z_index = -1
 position = Vector2(576, 324)
 scale = Vector2(0.3945206, 0.3946407)
 texture = SubResource("AnimatedTexture_flqon")
 
-[node name="MainMenuArt2" type="Sprite2D" parent="."]
+[node name="MainMenuArt2" type="Sprite2D" parent="." unique_id=873807806]
 z_index = -1
 position = Vector2(576, 971.99994)
 scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
-[node name="MainMenuArt3" type="Sprite2D" parent="."]
+[node name="MainMenuArt3" type="Sprite2D" parent="." unique_id=1025840787]
 z_index = -1
 position = Vector2(1728, 323.99997)
 scale = Vector2(0.3945206, 0.3946407)
