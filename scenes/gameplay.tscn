@@ -1,36 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://crnotpnlbg0bp"]
+[gd_scene format=3 uid="uid://crnotpnlbg0bp"]
 
 [ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://main_menu/icon.svg" id="1_a202f"]
 [ext_resource type="Script" uid="uid://bkeonmmvm1623" path="res://node_3d.gd" id="1_noarx"]
-
-[sub_resource type="Animation" id="Animation_a0tk4"]
-resource_name = "desk_to_customers"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.39999998),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.4433813, 1.6294913, 0), Vector3(-1.2349823, 1.6294913, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.39999998),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -1.5707964, 0), Vector3(0, 1.5707964, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_r3fl7"]
 length = 0.001
@@ -44,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.2349823, 1.6294913, 0)]
+"values": [Vector3(-1.235, 1.629, -2.7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +27,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1.5707964, 0)]
+"values": [Vector3(0, 1.5707964, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_wc5p8"]
@@ -88,49 +59,110 @@ tracks/1/keys = {
 "values": [Vector3(-1.235, 1.629, 0), Vector3(0.4433813, 1.6294913, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_00tan"]
+resource_name = "customers_to_desk_new"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector3(-1.2349823, 1.6294913, 0), Vector3(0, 1.629, -1.095), Vector3(-1.235, 1.629, -2.7)]
+}
+
+[sub_resource type="Animation" id="Animation_a0tk4"]
+resource_name = "desk_to_customers"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.4433813, 1.6294913, 0), Vector3(-1.2349823, 1.6294913, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l1v76"]
+resource_name = "desk_to_customers_new"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector3(-1.235, 1.629, -2.7), Vector3(0, 1.629, -1.025), Vector3(-1.235, 1.629, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jka67"]
 _data = {
 &"RESET": SubResource("Animation_r3fl7"),
 &"customers_to_desk": SubResource("Animation_wc5p8"),
-&"desk_to_customers": SubResource("Animation_a0tk4")
+&"customers_to_desk_new": SubResource("Animation_00tan"),
+&"desk_to_customers": SubResource("Animation_a0tk4"),
+&"desk_to_customers_new": SubResource("Animation_l1v76")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1458901737]
 script = ExtResource("1_noarx")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1262354790]
 transform = Transform3D(10, 0, 0, 0, -4.371139e-07, -10, 0, 10, -4.371139e-07, 0, 0, 0)
 texture = ExtResource("1_a202f")
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(-8.742278e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -2, -4.371139e-08, 1.9106855e-15, 2, 1, 0)
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1344839135]
+transform = Transform3D(-8.742278e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -2, -4.371139e-08, 1.9106855e-15, -2.657, 1, -2.671)
 render_priority = 2
 texture = ExtResource("1_a202f")
 
-[node name="Sprite3D5" type="Sprite3D" parent="."]
+[node name="Sprite3D5" type="Sprite3D" parent="." unique_id=1585002230]
 transform = Transform3D(-8.742278e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -2, -4.371139e-08, 1.9106855e-15, -2.6725783, 1, 0)
 render_priority = 2
 texture = ExtResource("1_a202f")
 
-[node name="Sprite3D6" type="Sprite3D" parent="."]
+[node name="Sprite3D6" type="Sprite3D" parent="." unique_id=2068975676]
 transform = Transform3D(3.5648409e-09, -0.040776983, 0.9991683, -8.735007e-08, 0.9991683, 0.040776983, -2, -4.371139e-08, 1.9106855e-15, -1.9849826, 0.3568195, 0)
 render_priority = 2
 texture = ExtResource("1_a202f")
 
-[node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform3D(-2.6226834e-08, 0, 0.3, 0, 0.3, 0, -0.6, 0, -1.3113417e-08, 2.1336877, 1.2266737, 0.56104255)
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1365186600]
+transform = Transform3D(-2.6226834e-08, 0, 0.3, 0, 0.3, 0, -0.6, 0, -1.3113417e-08, -2.5206544, 1.2266732, -2.110144)
 render_priority = 3
 texture = ExtResource("1_a202f")
 
-[node name="Sprite3D4" type="Sprite3D" parent="."]
-transform = Transform3D(-8.742278e-09, 0.4, -8.742278e-09, 0, -1.7484556e-08, -0.2, -0.2, -1.7484556e-08, 3.821371e-16, 1.9596981, 1.104385, -0.7230135)
+[node name="Sprite3D4" type="Sprite3D" parent="." unique_id=150005623]
+transform = Transform3D(-8.742278e-09, 0.4, -8.742278e-09, 0, -1.7484556e-08, -0.2, -0.2, -1.7484556e-08, 3.821371e-16, -2.695, 1.04, -3.394)
 render_priority = 2
 texture = ExtResource("1_a202f")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.2349823, 1.6294913, 0)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2028863731]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.235, 1.629, -2.7)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jka67")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=839117365]
+libraries/ = SubResource("AnimationLibrary_jka67")
