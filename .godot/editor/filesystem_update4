@@ -1,5 +1,3 @@
-res://scenes/main_menu.tscn
-res://main_menu/menu_play_button.gd
+res://scenes/gameplay.tscn
 res://node_3d.gd
-res://settings.gd
-res://main_menu/control.gd
+res://main_menu/main_menu.gd
