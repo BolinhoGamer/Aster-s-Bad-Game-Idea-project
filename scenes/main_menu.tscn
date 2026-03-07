@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbt714o4nw8fy"]
+[gd_scene load_steps=14 format=3 uid="uid://bbt714o4nw8fy"]
 
 [ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_5dd4i"]
 [ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://main_menu/menu_play_button.gd" id="2_lgwnu"]
@@ -8,9 +8,20 @@
 [ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_7b55j"]
 [ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="7_5pajh"]
 [ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_j7ex8"]
-[ext_resource type="Script" uid="uid://dfuvyfprc1dyu" path="res://settings.gd" id="9_a8gd2"]
 [ext_resource type="Texture2D" uid="uid://chsbyx6y07co" path="res://assets/images/MainMenuArtFrame1.png" id="10_hstxw"]
 [ext_resource type="Texture2D" uid="uid://b24eehtwccteq" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://cshg0ixxv7df0" path="res://assets/images/menu_background.png" id="12_flqon"]
+
+[sub_resource type="GDScript" id="GDScript_lgwnu"]
+script/source = "extends Control
+
+func _on_volume_slider_value_changed(value: float) -> void:
+	if value <= -20.0:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), -1000000)
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), value)
+	
+"
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_flqon"]
 frames = 2
@@ -111,7 +122,7 @@ offset_left = 1152.0
 offset_right = 2304.0
 offset_bottom = 648.0
 mouse_filter = 2
-script = ExtResource("9_a8gd2")
+script = SubResource("GDScript_lgwnu")
 
 [node name="VolumeSlider" type="HSlider" parent="Settings"]
 layout_mode = 0
@@ -121,8 +132,9 @@ offset_right = 363.0
 offset_bottom = 232.0
 min_value = -20.0
 max_value = 10.0
+value = -5.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Settings/VolumeSlider"]
+[node name="VolumeLabel" type="RichTextLabel" parent="Settings/VolumeSlider"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -130,12 +142,45 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Master Volume"
 
+[node name="MouseSensSlider" type="HSlider" parent="Settings"]
+layout_direction = 4
+layout_mode = 0
+offset_left = 683.0
+offset_top = 216.0
+offset_right = 1003.0
+offset_bottom = 232.0
+min_value = 0.1
+max_value = 3.0
+step = 0.0
+value = 0.1
+
+[node name="MouseSensLabel" type="RichTextLabel" parent="Settings/MouseSensSlider"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -41.0
+offset_right = 209.0
+offset_bottom = -1.0
+text = "Mouse Sensetivity"
+
 [node name="MainMenuArt" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(576, 324)
 scale = Vector2(0.3945206, 0.3946407)
 texture = SubResource("AnimatedTexture_flqon")
 
+[node name="MainMenuArt2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 971.99994)
+scale = Vector2(0.3945206, 0.3946407)
+texture = ExtResource("12_flqon")
+
+[node name="MainMenuArt3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1728, 323.99997)
+scale = Vector2(0.3945206, 0.3946407)
+texture = ExtResource("12_flqon")
+
 [connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/MouseSensSlider" to="Settings" method="_on_mouse_sensetivity_slider_value_changed"]

@@ -1,2 +1,3 @@
-res://node_2d.tscn::83de16b4a3651cf720aa84b993da2a24::1772763652::res://.godot/exported/133200997/export-362256a061aa8890e9a1e558b11e5ec3-node_2d.scn
 res://assets/sounds/default_bus_layout.tres::a76c641568285e73876c7cc368e1c8fe::1772760970::res://.godot/exported/133200997/export-62f185b66f530cef8f934d91a3005581-default_bus_layout.res
+res://scenes/gameplay.tscn::33906d25860873e37581c3c6fd5b473f::1772810608::res://.godot/exported/133200997/export-073adc752d2c0a165c14d2303ed092c9-gameplay.scn
+res://scenes/main_menu.tscn::b39a857c3947c1a11acfe076ba817c3b::1772834228::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn

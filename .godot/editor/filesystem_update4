@@ -1,3 +1,5 @@
 res://scenes/main_menu.tscn
 res://main_menu/menu_play_button.gd
 res://node_3d.gd
+res://settings.gd
+res://main_menu/control.gd
