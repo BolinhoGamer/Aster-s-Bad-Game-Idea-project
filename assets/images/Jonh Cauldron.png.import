@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cshg0ixxv7df0"
-path.s3tc="res://.godot/imported/menu_background.png-f64e89e1fa6fbecea6149f323dd67638.s3tc.ctex"
+uid="uid://4jl7qybpw3u0"
+path.s3tc="res://.godot/imported/Jonh Cauldron.png-bb7563b2b48acf10fade1fb38732d4e7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/menu_background.png"
-dest_files=["res://.godot/imported/menu_background.png-f64e89e1fa6fbecea6149f323dd67638.s3tc.ctex"]
+source_file="res://assets/images/Jonh Cauldron.png"
+dest_files=["res://.godot/imported/Jonh Cauldron.png-bb7563b2b48acf10fade1fb38732d4e7.s3tc.ctex"]
 
 [params]
 

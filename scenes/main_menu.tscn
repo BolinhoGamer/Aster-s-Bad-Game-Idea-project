@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bbt714o4nw8fy"]
 
-[ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://main_menu/main_menu.gd" id="1_5dd4i"]
+[ext_resource type="Script" uid="uid://dcusdyfaryc2o" path="res://scripts/main_menu_scripts/main_menu.gd" id="1_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://cww3yym6y6b7e" path="res://assets/images/start.png" id="2_7b55j"]
-[ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://main_menu/menu_play_button.gd" id="2_lgwnu"]
-[ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://main_menu/menu_credits_button.gd" id="3_flqon"]
+[ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://scripts/main_menu_scripts/menu_play_button.gd" id="2_lgwnu"]
+[ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://scripts/main_menu_scripts/menu_credits_button.gd" id="3_flqon"]
 [ext_resource type="Texture2D" uid="uid://dwt8waxbn8v0g" path="res://assets/images/credits.png" id="4_5pajh"]
-[ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://main_menu/menu_return_button.gd" id="4_rcqid"]
-[ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://main_menu/menu_settings_button.gd" id="5_1ajci"]
-[ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://main_menu/menu_quit_button.gd" id="6_7b55j"]
+[ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://scripts/main_menu_scripts/menu_return_button.gd" id="4_rcqid"]
+[ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://scripts/main_menu_scripts/menu_settings_button.gd" id="5_1ajci"]
+[ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://scripts/main_menu_scripts/menu_quit_button.gd" id="6_7b55j"]
 [ext_resource type="AudioStream" uid="uid://ddnd82jn07wtm" path="res://assets/sounds/Ideophobia.ogg" id="7_5pajh"]
 [ext_resource type="Texture2D" uid="uid://cj6xxu6fb201j" path="res://assets/images/options.png" id="7_j7ex8"]
-[ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://main_menu/camera_2d.gd" id="8_j7ex8"]
+[ext_resource type="Script" uid="uid://cda8otao7e7eo" path="res://scripts/main_menu_scripts/camera_2d.gd" id="8_j7ex8"]
 [ext_resource type="Texture2D" uid="uid://c7rq2kydold5o" path="res://assets/images/quit.png" id="9_a8gd2"]
 [ext_resource type="Texture2D" uid="uid://clo2y2u5c2cih" path="res://assets/images/MainMenuArtFrame1.png" id="10_hstxw"]
 [ext_resource type="Texture2D" uid="uid://oy51dvc11oe0" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
@@ -39,8 +39,8 @@ script = ExtResource("1_5dd4i")
 [node name="MenuPlayButton" type="Button" parent="." unique_id=931199454]
 offset_left = 820.0
 offset_top = 188.0
-offset_right = 1000.0
-offset_bottom = 258.0
+offset_right = 1008.0
+offset_bottom = 266.0
 pivot_offset = Vector2(90, 35)
 icon = ExtResource("2_7b55j")
 script = ExtResource("2_lgwnu")
@@ -151,8 +151,8 @@ text = "Mouse Sensetivity"
 
 [node name="MainMenuArt" type="Sprite2D" parent="." unique_id=645314722]
 z_index = -1
-position = Vector2(577.7774, 325.00006)
-scale = Vector2(0.6053713, 0.6055556)
+position = Vector2(576, 324.00003)
+scale = Vector2(0.6, 0.6000001)
 texture = SubResource("AnimatedTexture_flqon")
 
 [node name="MainMenuArt2" type="Sprite2D" parent="." unique_id=873807806]
@@ -168,6 +168,6 @@ scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
 [connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]
-[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/MouseSensSlider" to="Settings" method="_on_mouse_sensetivity_slider_value_changed"]

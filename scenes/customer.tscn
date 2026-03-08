@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bukfe5xiyb71a"]
+
+[ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="1_ktfjk"]
+[ext_resource type="Script" uid="uid://dm416jk7sdjlm" path="res://scripts/gameplay_scripts/customer.gd" id="1_xss0h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fx2s6"]
+
+[sub_resource type="Animation" id="Animation_ktfjk"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_xss0h"]
+resource_name = "customer_walk"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.1, 0, 0.5, 1, 0, 1.6, 0, 1, 1, 0, 1.1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qg4y"]
+_data = {
+&"RESET": SubResource("Animation_ktfjk"),
+&"customer_walk": SubResource("Animation_xss0h")
+}
+
+[node name="customer" type="CharacterBody3D" unique_id=1692440781]
+script = ExtResource("1_xss0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=318708477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fx2s6")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1142329769]
+transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, 0, 0, 0)
+texture = ExtResource("1_ktfjk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665698427]
+libraries/ = SubResource("AnimationLibrary_8qg4y")
+
+[node name="Timer" type="Timer" parent="." unique_id=1135262207]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
