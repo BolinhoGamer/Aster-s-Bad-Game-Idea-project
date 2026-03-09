@@ -1,3 +1,4 @@
 res://scenes/main_menu.tscn
 res://scenes/gameplay.tscn
 res://scripts/main_menu_scripts/menu_button_super.gd
+res://scenes/customer.tscn

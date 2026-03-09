@@ -251,8 +251,8 @@ transparent = false
 texture = SubResource("AtlasTexture_4bh5q")
 
 [node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1365186600]
-transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -2.5206544, 1.537897, -2.110144)
-billboard = 1
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -2.5206544, 1.537897, -2.4641595)
+billboard = 2
 texture = SubResource("AtlasTexture_din8e")
 
 [node name="Sprite3D4" type="Sprite3D" parent="." unique_id=150005623]

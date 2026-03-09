@@ -40,6 +40,7 @@ shape = SubResource("CapsuleShape3D_fx2s6")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1142329769]
 transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, 0, 0, 0)
+billboard = 2
 texture = ExtResource("1_ktfjk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665698427]
