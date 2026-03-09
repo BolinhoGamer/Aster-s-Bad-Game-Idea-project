@@ -37,57 +37,67 @@ frame_1/duration = 1.0
 script = ExtResource("1_5dd4i")
 
 [node name="MenuPlayButton" type="Button" parent="." unique_id=931199454]
-offset_left = 820.0
-offset_top = 188.0
-offset_right = 1008.0
-offset_bottom = 266.0
+offset_left = 800.0
+offset_top = 142.0
+offset_right = 988.0
+offset_bottom = 220.0
+scale = Vector2(1.6, 1.6)
 pivot_offset = Vector2(90, 35)
 icon = ExtResource("2_7b55j")
+flat = true
 script = ExtResource("2_lgwnu")
 
-[node name="MenuCreditsButton" type="Button" parent="." unique_id=2075232248]
-offset_left = 820.0
-offset_top = 388.0
-offset_right = 1000.0
-offset_bottom = 458.0
-pivot_offset = Vector2(90, 35)
-icon = ExtResource("4_5pajh")
-script = ExtResource("3_flqon")
-
-[node name="MenuCreditsReturnButton2" type="Button" parent="." unique_id=370619347]
-offset_left = 55.0
-offset_top = 676.0
-offset_right = 251.0
-offset_bottom = 746.0
-pivot_offset = Vector2(90, 35)
-text = "RETURN TO MAIN MENU"
-script = ExtResource("4_rcqid")
-
 [node name="MenuSettingsButton" type="Button" parent="." unique_id=351627984]
-offset_left = 820.0
+offset_left = 841.0
 offset_top = 288.0
-offset_right = 1000.0
-offset_bottom = 358.0
+offset_right = 1029.0
+offset_bottom = 366.0
+scale = Vector2(1.6, 1.6)
 pivot_offset = Vector2(90, 35)
 icon = ExtResource("7_j7ex8")
+flat = true
 script = ExtResource("5_1ajci")
 
+[node name="MenuCreditsButton" type="Button" parent="." unique_id=2075232248]
+offset_left = 787.0
+offset_top = 414.0
+offset_right = 975.0
+offset_bottom = 492.0
+scale = Vector2(1.6, 1.6)
+pivot_offset = Vector2(90, 35)
+icon = ExtResource("4_5pajh")
+flat = true
+script = ExtResource("3_flqon")
+
 [node name="MenuQuitButton" type="Button" parent="." unique_id=743436300]
-offset_left = 980.0
-offset_top = 555.0
-offset_right = 1168.0
-offset_bottom = 633.0
+offset_left = 914.0
+offset_top = 548.0
+offset_right = 1102.0
+offset_bottom = 626.0
+scale = Vector2(1.6, 1.6)
 pivot_offset = Vector2(90, 35)
 icon = ExtResource("9_a8gd2")
+flat = true
 script = ExtResource("6_7b55j")
 
 [node name="MenuSettingsReturnButton" type="Button" parent="." unique_id=1296588268]
-offset_left = 1186.0
-offset_top = 19.0
-offset_right = 1382.0
-offset_bottom = 89.0
+offset_left = 1288.0
+offset_top = 50.0
+offset_right = 1484.0
+offset_bottom = 120.0
 pivot_offset = Vector2(90, 35)
 text = "RETURN TO MAIN MENU"
+flat = true
+script = ExtResource("4_rcqid")
+
+[node name="MenuCreditsReturnButton2" type="Button" parent="." unique_id=370619347]
+offset_left = 134.0
+offset_top = 712.0
+offset_right = 330.0
+offset_bottom = 782.0
+pivot_offset = Vector2(90, 35)
+text = "RETURN TO MAIN MENU"
+flat = true
 script = ExtResource("4_rcqid")
 
 [node name="Ideophobia" type="AudioStreamPlayer2D" parent="." unique_id=1482521981]
@@ -150,7 +160,7 @@ offset_bottom = -1.0
 text = "Mouse Sensetivity"
 
 [node name="MainMenuArt" type="Sprite2D" parent="." unique_id=645314722]
-z_index = -1
+z_index = -2
 position = Vector2(576, 324.00003)
 scale = Vector2(0.6, 0.6000001)
 texture = SubResource("AnimatedTexture_flqon")
@@ -168,6 +178,6 @@ scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
 [connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]
-[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="Settings/MouseSensSlider" to="Settings" method="_on_mouse_sensetivity_slider_value_changed"]

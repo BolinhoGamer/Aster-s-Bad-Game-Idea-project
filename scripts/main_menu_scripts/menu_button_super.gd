@@ -6,8 +6,8 @@ class_name GenericButtonSuper
 var scale_factor:       float = 1
 var targ_scale_factor:  float = 1
 
-const MIN_SCALE_TARGET: float = 1
-const MAX_SCALE_TARGET: float = 1.1
+const MIN_SCALE_TARGET: float = 1.6
+const MAX_SCALE_TARGET: float = 2.0
 
 
 func _process(delta: float) -> void:

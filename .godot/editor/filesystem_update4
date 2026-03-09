@@ -1,9 +1,3 @@
-res://scenes/gameplay.tscn
-res://scripts/gameplay scripts/customer_meneger.gd
-res://node_3d.gd
 res://scenes/main_menu.tscn
-res://scenes/customer.tscn
-res://scripts/gameplay scripts/animation_player.gd
-res://scripts/gameplay_scripts/customer.gd
-res://scripts/gameplay_scripts/customer_meneger.gd
-res://scripts/gameplay_scripts/customer_manager.gd
+res://scenes/gameplay.tscn
+res://scripts/main_menu_scripts/menu_button_super.gd

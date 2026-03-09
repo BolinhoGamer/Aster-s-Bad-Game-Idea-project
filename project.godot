@@ -27,6 +27,10 @@ buses/default_bus_layout="uid://dyxtp740c3gs4"
 
 GlobalScript="*res://global_script.gd"
 
+[display]
+
+window/size/borderless=true
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -57,5 +61,6 @@ D={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
