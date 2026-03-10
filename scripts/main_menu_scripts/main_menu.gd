@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 enum eGlobalGameState {
 	e_ggs_on_main_menu,

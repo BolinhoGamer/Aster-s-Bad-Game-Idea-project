@@ -270,3 +270,8 @@ libraries/ = SubResource("AnimationLibrary_jka67")
 script = ExtResource("3_l1v76")
 waiting_customer = ExtResource("2_ct7aa")
 customer_entering_chance = 0.4
+
+[node name="Timer" type="Timer" parent="customers_manager" unique_id=784743959]
+one_shot = true
+
+[connection signal="timeout" from="customers_manager/Timer" to="customers_manager" method="_on_timer_timeout"]

@@ -1,22 +1,49 @@
 extends CharacterBody3D
 
-@onready var animationplayer := $AnimationPlayer
+@onready var animation_player := $AnimationPlayer
 @onready var timer := $Timer
+@onready var navigation_agent := $NavigationAgent3D
 @onready var is_moving : bool
-const SPEED := -3.5
+
+
+enum customer_walk_targets{
+	customers_window,
+	exit,
+	resturant_inside
+}
+var current_customer_walk_target : int 
 
 func _ready() -> void:
+	current_customer_walk_target = customer_walk_targets.customers_window
 	is_moving = true
 	timer.wait_time = 2
 	timer.start()
 	
 
-func _physics_process(delta):
+#helper function for deciding where to go
+
+func set_movement_vector() -> Vector3:
+	const GO_RIGHT_VECTOR := Vector3(0, 0, -3.5)
+	const GO_LEFT_VECTOR := Vector3(0, 0, 3.5)
+	var current_vector : Vector3
+	
+	match current_customer_walk_target:
+		customer_walk_targets.customers_window:
+			current_vector =  GO_RIGHT_VECTOR
+		customer_walk_targets.resturant_inside:
+			current_vector =  GO_RIGHT_VECTOR
+		customer_walk_targets.exit:
+			current_vector = GO_LEFT_VECTOR
+			
+	return current_vector
+
+
+func _physics_process(_delta):
 	if is_moving:
-		velocity = Vector3(0, 0, SPEED)
+		velocity = set_movement_vector()
 		
-		if !animationplayer.is_playing():
-			animationplayer.play("customer_walk")
+		if !animation_player.is_playing():
+			animation_player.play("customer_walk")
 		
 	else:
 		velocity = Vector3.ZERO		
@@ -27,6 +54,15 @@ func _on_timer_timeout() -> void:
 	is_moving = false
 
 func _on_customer_leaving() -> void:
+	current_customer_walk_target = customer_walk_targets.exit
 	is_moving = true
 	timer.wait_time = 3
 	timer.start()
+	
+func _on_customer_going_in() -> void:
+	current_customer_walk_target = customer_walk_targets.resturant_inside
+	is_moving = true
+	timer.wait_time = 3
+	timer.start()
+	
+	

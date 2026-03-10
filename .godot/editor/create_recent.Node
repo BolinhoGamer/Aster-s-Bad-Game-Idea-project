@@ -1,4 +1,5 @@
 Timer
+NavigationAgent3D
 Sprite3D
 CollisionShape3D
 Area3D
@@ -11,5 +12,3 @@ Camera3D
 RichTextLabel
 HSlider
 Control
-AnimatedSprite2D
-VBoxContainer

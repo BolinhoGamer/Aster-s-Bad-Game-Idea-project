@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://oy51dvc11oe0" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://cshg0ixxv7df0" path="res://assets/images/menu_background.png" id="12_flqon"]
 
-[sub_resource type="GDScript" id="GDScript_lgwnu"]
+[sub_resource type="GDScript" id="GDScript_7b55j"]
 script/source = "extends Control
 
 func _on_volume_slider_value_changed(value: float) -> void:
@@ -27,16 +27,24 @@ func _on_volume_slider_value_changed(value: float) -> void:
 	
 "
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_flqon"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5pajh"]
 frames = 2
 frame_0/texture = ExtResource("10_hstxw")
 frame_1/texture = ExtResource("11_lgwnu")
 frame_1/duration = 1.0
 
-[node name="MainMenu" type="Node2D" unique_id=1095926161]
+[node name="Main_Menu" type="Control" unique_id=909113997]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_5dd4i")
 
-[node name="MenuPlayButton" type="Button" parent="." unique_id=931199454]
+[node name="MenuPlayButton" type="Button" parent="." unique_id=867488186]
+layout_mode = 0
 offset_left = 800.0
 offset_top = 142.0
 offset_right = 988.0
@@ -47,7 +55,8 @@ icon = ExtResource("2_7b55j")
 flat = true
 script = ExtResource("2_lgwnu")
 
-[node name="MenuSettingsButton" type="Button" parent="." unique_id=351627984]
+[node name="MenuSettingsButton" type="Button" parent="." unique_id=1318701100]
+layout_mode = 0
 offset_left = 841.0
 offset_top = 288.0
 offset_right = 1029.0
@@ -58,7 +67,8 @@ icon = ExtResource("7_j7ex8")
 flat = true
 script = ExtResource("5_1ajci")
 
-[node name="MenuCreditsButton" type="Button" parent="." unique_id=2075232248]
+[node name="MenuCreditsButton" type="Button" parent="." unique_id=217641180]
+layout_mode = 0
 offset_left = 787.0
 offset_top = 414.0
 offset_right = 975.0
@@ -69,7 +79,8 @@ icon = ExtResource("4_5pajh")
 flat = true
 script = ExtResource("3_flqon")
 
-[node name="MenuQuitButton" type="Button" parent="." unique_id=743436300]
+[node name="MenuQuitButton" type="Button" parent="." unique_id=22789449]
+layout_mode = 0
 offset_left = 914.0
 offset_top = 548.0
 offset_right = 1102.0
@@ -80,7 +91,8 @@ icon = ExtResource("9_a8gd2")
 flat = true
 script = ExtResource("6_7b55j")
 
-[node name="MenuSettingsReturnButton" type="Button" parent="." unique_id=1296588268]
+[node name="MenuSettingsReturnButton" type="Button" parent="." unique_id=323474556]
+layout_mode = 0
 offset_left = 1288.0
 offset_top = 50.0
 offset_right = 1484.0
@@ -90,7 +102,8 @@ text = "RETURN TO MAIN MENU"
 flat = true
 script = ExtResource("4_rcqid")
 
-[node name="MenuCreditsReturnButton2" type="Button" parent="." unique_id=370619347]
+[node name="MenuCreditsReturnButton2" type="Button" parent="." unique_id=1348291777]
+layout_mode = 0
 offset_left = 134.0
 offset_top = 712.0
 offset_right = 330.0
@@ -100,28 +113,27 @@ text = "RETURN TO MAIN MENU"
 flat = true
 script = ExtResource("4_rcqid")
 
-[node name="Ideophobia" type="AudioStreamPlayer2D" parent="." unique_id=1482521981]
+[node name="Ideophobia" type="AudioStreamPlayer2D" parent="." unique_id=93113850]
 position = Vector2(576, 324)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ideophobia" unique_id=1036074711]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ideophobia" unique_id=649578946]
 stream = ExtResource("7_5pajh")
 autoplay = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2060040920]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=568410650]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
 script = ExtResource("8_j7ex8")
 
-[node name="Settings" type="Control" parent="." unique_id=1490085233]
-layout_mode = 3
+[node name="Settings" type="Control" parent="." unique_id=2077743985]
 anchors_preset = 0
 offset_left = 1152.0
 offset_right = 2304.0
 offset_bottom = 648.0
 mouse_filter = 2
-script = SubResource("GDScript_lgwnu")
+script = SubResource("GDScript_7b55j")
 
-[node name="VolumeSlider" type="HSlider" parent="Settings" unique_id=350741629]
+[node name="VolumeSlider" type="HSlider" parent="Settings" unique_id=1796370450]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 216.0
@@ -131,7 +143,7 @@ min_value = -20.0
 max_value = 10.0
 value = -5.0
 
-[node name="VolumeLabel" type="RichTextLabel" parent="Settings/VolumeSlider" unique_id=793687674]
+[node name="VolumeLabel" type="RichTextLabel" parent="Settings/VolumeSlider" unique_id=1649702473]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -139,7 +151,7 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Master Volume"
 
-[node name="MouseSensSlider" type="HSlider" parent="Settings" unique_id=1399210919]
+[node name="MouseSensSlider" type="HSlider" parent="Settings" unique_id=1457345265]
 layout_direction = 4
 layout_mode = 0
 offset_left = 683.0
@@ -151,7 +163,7 @@ max_value = 3.0
 step = 0.0
 value = 0.1
 
-[node name="MouseSensLabel" type="RichTextLabel" parent="Settings/MouseSensSlider" unique_id=465868031]
+[node name="MouseSensLabel" type="RichTextLabel" parent="Settings/MouseSensSlider" unique_id=2100551080]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -159,25 +171,24 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Mouse Sensetivity"
 
-[node name="MainMenuArt" type="Sprite2D" parent="." unique_id=645314722]
+[node name="MainMenuArt" type="Sprite2D" parent="." unique_id=494515996]
 z_index = -2
 position = Vector2(576, 324.00003)
 scale = Vector2(0.6, 0.6000001)
-texture = SubResource("AnimatedTexture_flqon")
+texture = SubResource("AnimatedTexture_5pajh")
 
-[node name="MainMenuArt2" type="Sprite2D" parent="." unique_id=873807806]
+[node name="MainMenuArt2" type="Sprite2D" parent="." unique_id=327944182]
 z_index = -1
 position = Vector2(576, 971.99994)
 scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
-[node name="MainMenuArt3" type="Sprite2D" parent="." unique_id=1025840787]
+[node name="MainMenuArt3" type="Sprite2D" parent="." unique_id=398155328]
 z_index = -1
 position = Vector2(1728, 323.99997)
 scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
-[connection signal="ready" from="Ideophobia" to="." method="_on_ideophobia_ready"]
-[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/MouseSensSlider" to="Settings" method="_on_mouse_sensetivity_slider_value_changed"]
