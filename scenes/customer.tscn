@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bukfe5xiyb71a"]
 
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="1_ktfjk"]
-[ext_resource type="Script" uid="uid://dm416jk7sdjlm" path="res://scripts/gameplay_scripts/customer.gd" id="1_xss0h"]
+[ext_resource type="Script" uid="uid://d3rnanar2pldj" path="res://scripts/gameplay_scripts/customer.gd" id="1_xss0h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fx2s6"]
 

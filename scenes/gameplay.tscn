@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://crnotpnlbg0bp"]
 
 [ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://scripts/main_menu_scripts/icon.svg" id="1_a202f"]
-[ext_resource type="Script" uid="uid://bkeonmmvm1623" path="res://scripts/gameplay_scripts/node_3d.gd" id="1_noarx"]
+[ext_resource type="Script" uid="uid://bdgi8k2y6emp" path="res://scripts/gameplay_scripts/node_3d.gd" id="1_noarx"]
 [ext_resource type="PackedScene" uid="uid://bukfe5xiyb71a" path="res://scenes/customer.tscn" id="2_ct7aa"]
-[ext_resource type="Script" uid="uid://dl76anp0b3pw5" path="res://scripts/gameplay_scripts/customer_manager.gd" id="3_l1v76"]
+[ext_resource type="Script" uid="uid://b0dsxmraa6lfx" path="res://scripts/gameplay_scripts/customer_manager.gd" id="3_l1v76"]
 [ext_resource type="Texture2D" uid="uid://bmkr4vh0pwxvq" path="res://assets/images/Untitled_Artwork.png" id="3_ocj2s"]
+[ext_resource type="Script" uid="uid://ckhelw0nbr4rn" path="res://scripts/gameplay_scripts/score_counter.gd" id="4_din8e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -47,7 +48,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("customers_manager:_walk_end_signal")
+tracks/2/path = NodePath("CustomersManager:_walk_end_signal")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -266,12 +267,32 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=839117365]
 libraries/ = SubResource("AnimationLibrary_jka67")
 
-[node name="customers_manager" type="Node3D" parent="." unique_id=1224182165]
+[node name="CustomersManager" type="Node3D" parent="." unique_id=1224182165]
 script = ExtResource("3_l1v76")
 waiting_customer = ExtResource("2_ct7aa")
 customer_entering_chance = 0.4
 
-[node name="Timer" type="Timer" parent="customers_manager" unique_id=784743959]
+[node name="CustomerWaitTimer" type="Timer" parent="CustomersManager" unique_id=784743959]
 one_shot = true
 
-[connection signal="timeout" from="customers_manager/Timer" to="customers_manager" method="_on_timer_timeout"]
+[node name="CustomerWalkTimer" type="Timer" parent="CustomersManager" unique_id=484725621]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1091460538]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1181469613]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 174.0
+offset_bottom = 181.0
+
+[node name="ScoreCounter" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=1858008801]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "300"
+script = ExtResource("4_din8e")
+
+[connection signal="update_score_counter" from="CustomersManager" to="CanvasLayer/Control/ScoreCounter" method="_on_customers_manager_update_score_counter"]
+[connection signal="timeout" from="CustomersManager/CustomerWaitTimer" to="CustomersManager" method="_on_customer_wait_timer_timeout"]

@@ -1,3 +1,5 @@
+Control
+CanvasLayer
 Timer
 NavigationAgent3D
 Sprite3D
@@ -11,4 +13,3 @@ AnimationTree
 Camera3D
 RichTextLabel
 HSlider
-Control

@@ -3,8 +3,10 @@ extends CharacterBody3D
 @onready var animation_player := $AnimationPlayer
 @onready var timer := $Timer
 @onready var navigation_agent := $NavigationAgent3D
+@onready var customer_manager := get_parent()
 @onready var is_moving : bool
 
+signal score_change(change: int)
 
 enum customer_walk_targets{
 	customers_window,
@@ -13,7 +15,13 @@ enum customer_walk_targets{
 }
 var current_customer_walk_target : int 
 
+var reward: int
+
 func _ready() -> void:
+	if (customer_manager != null):
+		score_change.connect(customer_manager._on_score_change)
+	reward = 30
+	
 	current_customer_walk_target = customer_walk_targets.customers_window
 	is_moving = true
 	timer.wait_time = 2
@@ -54,12 +62,16 @@ func _on_timer_timeout() -> void:
 	is_moving = false
 
 func _on_customer_leaving() -> void:
+	emit_signal("score_change", -reward)
+	
 	current_customer_walk_target = customer_walk_targets.exit
 	is_moving = true
 	timer.wait_time = 3
 	timer.start()
 	
 func _on_customer_going_in() -> void:
+	emit_signal("score_change", reward)
+	
 	current_customer_walk_target = customer_walk_targets.resturant_inside
 	is_moving = true
 	timer.wait_time = 3

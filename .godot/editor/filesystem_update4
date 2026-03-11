@@ -1,7 +1,6 @@
-res://scripts/main_menu_scripts/menu_button_super.gd
-res://scenes/gameplay.tscn
-res://scripts/gameplay_scripts/customer_manager.gd
 res://scenes/customer.tscn
 res://scripts/gameplay_scripts/customer.gd
-res://scenes/main_menu.tscn
-res://scripts/main_menu_scripts/main_menu.gd
+res://scripts/gameplay_scripts/customer_manager.gd
+res://scenes/gameplay.tscn
+res://scripts/gameplay_scripts/node_3d.gd
+res://scripts/gameplay_scripts/score_counter.gd

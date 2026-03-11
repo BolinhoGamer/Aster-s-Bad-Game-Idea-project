@@ -4,11 +4,14 @@ extends Node3D
 #the number will decide the chance for a customer to enter 
 @export var customer_entering_chance : float
 
-@onready var timer := $Timer
+@onready var customer_wait_timer := $CustomerWaitTimer
+@onready var customer_walk_timer := $CustomerWalkTimer
+@onready var main_node := get_parent()
+@onready var score := 300
 
 signal customer_leaving()
 signal customer_going_in()
-
+signal update_score_counter(new_score: int)
 
 var current_customer = null
 func _process(_delta: float) -> void:
@@ -27,45 +30,61 @@ func customer_spawn() -> void:
 		customer_going_in.connect(current_customer._on_customer_going_in)
 	
 		current_customer.position = Vector3(-5,0,7)
-		await get_tree().create_timer(2.0).timeout
+		customer_walk_timer.wait_time = 2
+		customer_walk_timer.start()
+		await customer_walk_timer.timeout
 		is_customer_walking = false
 		
-		timer.wait_time = 2
-		timer.start()
+		customer_wait_timer.wait_time = 2
+		customer_wait_timer.start()
 
 func _input(event: InputEvent) -> void:
 	if current_customer != null and is_customer_walking == false:
 		if event.is_action("make customer leave") :
-			timer.stop()
+			customer_wait_timer.stop()
 			emit_signal("customer_leaving")
 			
 			is_customer_walking = true
-			await get_tree().create_timer(3.0).timeout
+			customer_walk_timer.wait_time = 3
+			customer_walk_timer.start()
+			await customer_walk_timer.timeout
 			
 			is_customer_walking = false
 			current_customer.queue_free()
 		
 		if event.is_action("make customer wait") :
-			timer.stop()
-			timer.wait_time = 15
-			timer.start()
+			customer_wait_timer.stop()
+			customer_wait_timer.wait_time = 15
+			customer_wait_timer.start()
 		
 		if event.is_action("make customer go inside") :
+			customer_wait_timer.stop()
 			emit_signal("customer_going_in")
 			
 			is_customer_walking = true
-			await get_tree().create_timer(3.0).timeout
+			customer_walk_timer.wait_time = 3
+			customer_walk_timer.start()
+			await customer_walk_timer.timeout
 			
 			is_customer_walking = false
 			current_customer.queue_free()
 
 
-func _on_timer_timeout() -> void:
+func _on_score_change(change):
+	await customer_walk_timer.timeout
+	score += change
+	emit_signal("update_score_counter", score)
+	
+
+
+func _on_customer_wait_timer_timeout() -> void:
 	#Input.action_press("make customer leave")
 	emit_signal("customer_leaving")
 	is_customer_walking = true
 	
-	await get_tree().create_timer(3.0).timeout
+	customer_walk_timer.wait_time = 2
+	customer_walk_timer.start()
+	await customer_walk_timer.timeout
 	is_customer_walking = false
 	
 	current_customer.queue_free()

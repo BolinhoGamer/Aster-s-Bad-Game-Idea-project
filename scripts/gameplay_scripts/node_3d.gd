@@ -14,7 +14,6 @@ enum events{
 
 var last_event = events.desk
 
-
 func go_to_desk():
 	if last_event == events.customers:
 		$AnimationPlayer.play("customers_to_desk_new")
