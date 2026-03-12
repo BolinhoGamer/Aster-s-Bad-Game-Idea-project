@@ -6,23 +6,30 @@ extends Node3D
 
 @onready var customer_wait_timer := $CustomerWaitTimer
 @onready var customer_walk_timer := $CustomerWalkTimer
+@onready var new_customer_timer := $NewCustomerTimer
 @onready var main_node := get_parent()
-@onready var score := 300
+@onready var score :int = main_node.score
 
 signal customer_leaving()
 signal customer_going_in()
 signal update_score_counter(new_score: int)
+signal debug(rng_num: float)
 
 var current_customer = null
 func _process(_delta: float) -> void:
-	await get_tree().create_timer(1.0).timeout
+	new_customer_timer.start(1)
+	#await new_customer_timer.timeout
 	if current_customer == null:
 		customer_spawn()
+	
 		
 
+var debugvar : float
 var is_customer_walking := false
 func customer_spawn() -> void:
-	if randf() <= customer_entering_chance:
+	debugvar = randf_range(0, 1)
+	#emit_signal("debug", debugvar)
+	if debugvar <= customer_entering_chance:
 		is_customer_walking = true
 		current_customer = waiting_customer.instantiate()
 		add_child(current_customer)
@@ -30,13 +37,11 @@ func customer_spawn() -> void:
 		customer_going_in.connect(current_customer._on_customer_going_in)
 	
 		current_customer.position = Vector3(-5,0,7)
-		customer_walk_timer.wait_time = 2
-		customer_walk_timer.start()
+		customer_walk_timer.start(2)
 		await customer_walk_timer.timeout
 		is_customer_walking = false
 		
-		customer_wait_timer.wait_time = 2
-		customer_wait_timer.start()
+		customer_wait_timer.start(2)
 
 func _input(event: InputEvent) -> void:
 	if current_customer != null and is_customer_walking == false:
@@ -45,8 +50,7 @@ func _input(event: InputEvent) -> void:
 			emit_signal("customer_leaving")
 			
 			is_customer_walking = true
-			customer_walk_timer.wait_time = 3
-			customer_walk_timer.start()
+			customer_walk_timer.start(3)
 			await customer_walk_timer.timeout
 			
 			is_customer_walking = false
@@ -54,16 +58,14 @@ func _input(event: InputEvent) -> void:
 		
 		if event.is_action("make customer wait") :
 			customer_wait_timer.stop()
-			customer_wait_timer.wait_time = 15
-			customer_wait_timer.start()
+			customer_wait_timer.start(15)
 		
 		if event.is_action("make customer go inside") :
 			customer_wait_timer.stop()
 			emit_signal("customer_going_in")
 			
 			is_customer_walking = true
-			customer_walk_timer.wait_time = 3
-			customer_walk_timer.start()
+			customer_walk_timer.start(3)
 			await customer_walk_timer.timeout
 			
 			is_customer_walking = false
@@ -82,8 +84,7 @@ func _on_customer_wait_timer_timeout() -> void:
 	emit_signal("customer_leaving")
 	is_customer_walking = true
 	
-	customer_walk_timer.wait_time = 2
-	customer_walk_timer.start()
+	customer_walk_timer.start(2)
 	await customer_walk_timer.timeout
 	is_customer_walking = false
 	

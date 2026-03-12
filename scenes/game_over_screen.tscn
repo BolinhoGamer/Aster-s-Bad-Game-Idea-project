@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b2x0mwnhqlb2s"]
+
+[ext_resource type="Script" uid="uid://dq3etklsg2psl" path="res://scripts/main_menu_scripts/game_over_screen.gd" id="1_iwahs"]
+
+[sub_resource type="Animation" id="Animation_iwahs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/fade screen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/fade screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_61w2s"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/fade screen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/fade screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jw6e5"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/fade screen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/fade screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61w2s"]
+_data = {
+&"RESET": SubResource("Animation_iwahs"),
+&"fade in": SubResource("Animation_61w2s"),
+&"fade out": SubResource("Animation_jw6e5")
+}
+
+[node name="GameOverScreen" type="Control" unique_id=197302460]
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iwahs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=317885682]
+
+[node name="Transition" type="AnimationPlayer" parent="CanvasLayer" unique_id=1083823726]
+libraries/ = SubResource("AnimationLibrary_61w2s")
+
+[node name="fade screen" type="ColorRect" parent="CanvasLayer/Transition" unique_id=343130780]
+z_index = 10
+offset_right = 547.0
+offset_bottom = 302.0
+scale = Vector2(2.1060119, 2.1456885)
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=729781956]
+offset_left = 473.0
+offset_top = 373.0
+offset_right = 610.0
+offset_bottom = 404.0
+text = "go back to menu"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2059862931]
+offset_left = 490.0
+offset_top = 223.0
+offset_right = 591.0
+offset_bottom = 272.0
+text = "you died
+womp womp"
+
+[connection signal="animation_finished" from="CanvasLayer/Transition" to="." method="_on_transition_animation_finished"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

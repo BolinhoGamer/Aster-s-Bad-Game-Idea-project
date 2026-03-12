@@ -1,6 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1773268614
-export_presets.cfg::TextFile::-1::1773190297::0::1::::<><><>0<>0<><>::
+::res://::1773345376
+export_presets.cfg::TextFile::-1::1773272144::0::1::::<><><>0<>0<><>::
 global_script.gd::GDScript::4191885001812392639::1772913738::0::1::::<>Node<><>0<>0<><>::
 ::res://addons/::1772913739
 ::res://addons/godot-git-plugin/::1772913740
@@ -8,7 +8,7 @@ git_plugin.gdextension::GDExtension::628816635557945269::1772913739::0::1::::<><
 THIRDPARTY.md::TextFile::-1::1772913739::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/linux/::1772913739
 ::res://addons/godot-git-plugin/macos/::1772913739
-::res://addons/godot-git-plugin/windows/::1773268610
+::res://addons/godot-git-plugin/windows/::1773345369
 ::res://assets/::1772913740
 ::res://assets/images/::1773166674
 credits.png::CompressedTexture2D::8744682772264983908::1772958526::1772958891::1::::<><><>0<>0<>a5fe13ca48c0c17e3c5869ce52835c6d<>res://.godot/imported/credits.png-8e9803b90568fba3b72c7e8f12106a1e.ctex::
@@ -23,15 +23,16 @@ Untitled_Artwork.png::CompressedTexture2D::3250415676751165878::1773166664::1773
 ::res://assets/sounds/::1772913740
 default_bus_layout.tres::AudioBusLayout::8892457123192790521::1772913740::0::1::::<><><>0<>0<><>::
 Ideophobia.ogg::AudioStreamOggVorbis::7396908007632384730::1772913740::1772913740::1::::<><><>0<>0<>c2c0135677d31ea1114f0375ac91c407<>res://.godot/imported/Ideophobia.ogg-f15dec9b9a9ec4c84493d267629a21ca.oggvorbisstr::
-::res://scenes/::1773254189
-customer.tscn::PackedScene::3811153673760436924::1773254189::0::1::::<><><>0<>0<><>::uid://4jl7qybpw3u0::::res://assets/images/Jonh Cauldron.png<>uid://d3rnanar2pldj::::res://scripts/gameplay_scripts/customer.gd
-gameplay.tscn::PackedScene::5993773396452553589::1773253933::0::1::::<><><>0<>0<><>::uid://c75jrp57x4wfs::::res://scripts/main_menu_scripts/icon.svg<>uid://bdgi8k2y6emp::::res://scripts/gameplay_scripts/node_3d.gd<>uid://bukfe5xiyb71a::::res://scenes/customer.tscn<>uid://b0dsxmraa6lfx::::res://scripts/gameplay_scripts/customer_manager.gd<>uid://bmkr4vh0pwxvq::::res://assets/images/Untitled_Artwork.png
+::res://scenes/::1773309419
+customer.tscn::PackedScene::3811153673760436924::1773272007::0::1::::<><><>0<>0<><>::uid://4jl7qybpw3u0::::res://assets/images/Jonh Cauldron.png<>uid://d3rnanar2pldj::::res://scripts/gameplay_scripts/customer.gd
+gameplay.tscn::PackedScene::5993773396452553589::1773309419::0::1::::<><><>0<>0<><>::uid://c75jrp57x4wfs::::res://scripts/main_menu_scripts/icon.svg<>uid://bdgi8k2y6emp::::res://scripts/gameplay_scripts/node_3d.gd<>uid://bukfe5xiyb71a::::res://scenes/customer.tscn<>uid://b0dsxmraa6lfx::::res://scripts/gameplay_scripts/customer_manager.gd<>uid://bmkr4vh0pwxvq::::res://assets/images/Untitled_Artwork.png<>uid://ckhelw0nbr4rn::::res://scripts/gameplay_scripts/score_counter.gd
 main_menu.tscn::PackedScene::2497823625208642022::1773178223::0::1::::<><><>0<>0<><>::uid://dcusdyfaryc2o::::res://scripts/main_menu_scripts/main_menu.gd<>uid://cww3yym6y6b7e::::res://assets/images/start.png<>uid://d0gok07tixq80::::res://scripts/main_menu_scripts/menu_play_button.gd<>uid://bl3lkvnkfu3i8::::res://scripts/main_menu_scripts/menu_credits_button.gd<>uid://dwt8waxbn8v0g::::res://assets/images/credits.png<>uid://ckrgk7t6meryj::::res://scripts/main_menu_scripts/menu_return_button.gd<>uid://ybvd4gyi85ah::::res://scripts/main_menu_scripts/menu_settings_button.gd<>uid://c88hcbgbbax2b::::res://scripts/main_menu_scripts/menu_quit_button.gd<>uid://ddnd82jn07wtm::::res://assets/sounds/Ideophobia.ogg<>uid://cj6xxu6fb201j::::res://assets/images/options.png<>uid://cda8otao7e7eo::::res://scripts/main_menu_scripts/camera_2d.gd<>uid://c7rq2kydold5o::::res://assets/images/quit.png<>uid://clo2y2u5c2cih::::res://assets/images/MainMenuArtFrame1.png<>uid://oy51dvc11oe0::::res://assets/images/MainMenuArtFrame2.png<>uid://cshg0ixxv7df0::::res://assets/images/menu_background.png
 ::res://scripts/::1773001693
-::res://scripts/gameplay_scripts/::1773253965
-customer.gd::GDScript::9160434099281827683::1773253965::0::1::::<>CharacterBody3D<><>0<>0<><>::
-customer_manager.gd::GDScript::4148469543578807077::1773190297::0::1::::<>Node3D<><>0<>0<><>::
-node_3d.gd::GDScript::76762315186700559::1773190297::0::1::::<>Node3D<><>0<>0<><>::
+::res://scripts/gameplay_scripts/::1773272007
+customer.gd::GDScript::9160434099281827683::1773271891::0::1::::<>CharacterBody3D<><>0<>0<><>::
+customer_manager.gd::GDScript::4148469543578807077::1773272007::0::1::::<>Node3D<><>0<>0<><>::
+node_3d.gd::GDScript::76762315186700559::1773271117::0::1::::<>Node3D<><>0<>0<><>::
+score_counter.gd::GDScript::5489444154475476795::1773271922::0::1::::<>RichTextLabel<><>0<>0<><>::
 Untitled_Artwork.png::CompressedTexture2D::1228824803841756265::1773166664::1773166674::1::::<><><>0<>0<>033430a8b91e598eb71ac9d9f09899ca<>res://.godot/imported/Untitled_Artwork.png-8fde662292e54baf19c9977674bbd7c0.ctex::
 ::res://scripts/main_menu_scripts/::1773178160
 audio_setting.gd::GDScript::7080772881835895028::1772913740::0::1::::<>Control<><>0<>0<><>::

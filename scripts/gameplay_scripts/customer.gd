@@ -20,12 +20,11 @@ var reward: int
 func _ready() -> void:
 	if (customer_manager != null):
 		score_change.connect(customer_manager._on_score_change)
-	reward = 30
+	reward = 300
 	
 	current_customer_walk_target = customer_walk_targets.customers_window
 	is_moving = true
-	timer.wait_time = 2
-	timer.start()
+	timer.start(2)
 	
 
 #helper function for deciding where to go
@@ -66,15 +65,13 @@ func _on_customer_leaving() -> void:
 	
 	current_customer_walk_target = customer_walk_targets.exit
 	is_moving = true
-	timer.wait_time = 3
-	timer.start()
+	timer.start(3)
 	
 func _on_customer_going_in() -> void:
 	emit_signal("score_change", reward)
 	
 	current_customer_walk_target = customer_walk_targets.resturant_inside
 	is_moving = true
-	timer.wait_time = 3
-	timer.start()
+	timer.start(3)
 	
 	
