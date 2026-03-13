@@ -17,6 +17,13 @@ enum events{
 
 var last_event = events.desk
 
+enum night_end{
+	lose,
+	win
+}
+
+var exit : int
+
 var score := 300
 
 func _ready() -> void:
@@ -66,8 +73,17 @@ func _input(event: InputEvent) -> void:
 func _on_customers_manager_update_score_counter(new_score: int) -> void:
 	if new_score <= 0:
 		animationplayer.play("transition screen fade in")
+		exit = night_end.lose
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "transition screen fade in":
-		get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+		if exit == night_end.lose:
+			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+		elif exit == night_end.win:
+			get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
+
+
+func _on_final_rush_timer_timeout() -> void:
+	animationplayer.play("transition screen fade in")
+	exit = night_end.win

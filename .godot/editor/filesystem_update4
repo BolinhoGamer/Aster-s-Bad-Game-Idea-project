@@ -10,3 +10,4 @@ res://assets/sounds/default_bus_layout.tres
 res://scripts/gameplay_scripts/score_counter.gd
 res://scripts/main_menu_scripts/debug_text.gd
 res://scenes/customer.tscn
+res://scenes/win_screen.tscn
