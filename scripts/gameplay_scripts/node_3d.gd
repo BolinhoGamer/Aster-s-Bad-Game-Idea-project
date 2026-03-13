@@ -14,9 +14,24 @@ enum events{
 	customers,
 	default
 }
-
+enum positions{computer, default, paper}
 var last_event = events.desk
-
+var current_position = positions.default
+var camera_positions = {
+	"computer": {
+		"position": Vector3(-1.8, 1.66, -2.3),
+		"rotation": Vector3(0, 90, 0),
+	},
+	"default": {
+		"position": Vector3(-0.5, 1.6, -1),
+		"rotation": Vector3(0, 90, 0),
+	},
+	"paper": {
+		"position": Vector3(-2.6, 1.6, 0.23),
+		"rotation": Vector3(-85, 90, 0),
+	}
+}
+var walk_tween: Tween
 enum night_end{
 	lose,
 	win
@@ -27,48 +42,110 @@ var exit : int
 var score := 300
 
 func _ready() -> void:
+	walk_player("default")
 	animationplayer.play("transition screen fade out")
 
-func go_to_desk():
-	if last_event == events.customers:
-		animationplayer.play("camera movement/customers_to_desk_new")
-	
-	elif last_event == events.default:
-		animationplayer.play("camera movement/default_to_desk")
+#func go_to_desk():
+	#if last_event == events.customers:
+		#animationplayer.play("camera movement/customers_to_desk_new")
+	#
+	#elif last_event == events.default:
+		#animationplayer.play("camera movement/default_to_desk")
+#
+#
+#func go_to_customers():
+	#if last_event == events.desk:
+		#animationplayer.play("camera movement/desk_to_customers_new")
+	#
+	#elif last_event == events.default:
+		#animationplayer.play("camera movement/default_to_customers")
+#
+#
+#func go_to_default():
+	#if last_event == events.desk:
+		#animationplayer.play("camera movement/desk_to_default")
+	#
+	#elif last_event == events.customers:
+		#animationplayer.play("camera movement/customers_to_default")
 
-
-func go_to_customers():
-	if last_event == events.desk:
-		animationplayer.play("camera movement/desk_to_customers_new")
-	
-	elif last_event == events.default:
-		animationplayer.play("camera movement/default_to_customers")
-
-
-func go_to_default():
-	if last_event == events.desk:
-		animationplayer.play("camera movement/desk_to_default")
-	
-	elif last_event == events.customers:
-		animationplayer.play("camera movement/customers_to_default")
-
+const MOVEMENT_SPEED = 0.6
+#func _input(event: InputEvent) -> void:
+	## Only accepts inputs if the camera is stopped, so it doesn't snaps
+	## brutally to other position in the middle of the animation
+	#if not animationplayer.is_playing():
+		#if event.is_action("A") and last_event != events.customers:
+			#go_to_customers()
+			#last_event = events.customers
+#
+		#elif event.is_action("D") and last_event != events.desk:
+			#go_to_desk()
+			#last_event = events.desk
+		#
+		#elif event.is_action("S") and last_event != events.default:
+			#go_to_default()
+			#last_event = events.default
 
 func _input(event: InputEvent) -> void:
 	# Only accepts inputs if the camera is stopped, so it doesn't snaps
 	# brutally to other position in the middle of the animation
-	if not animationplayer.is_playing():
-		if event.is_action("A") and last_event != events.customers:
-			go_to_customers()
-			last_event = events.customers
-
-		elif event.is_action("D") and last_event != events.desk:
-			go_to_desk()
-			last_event = events.desk
+	if !event:
+		return
+	if walk_tween and walk_tween.is_running():
+		return
+	
+	if event.is_action("D"):
+		walk_player("computer")
+		walk_customers()
+	elif event.is_action("S"):
+		walk_player("default")
 		
-		elif event.is_action("S") and last_event != events.default:
-			go_to_default()
-			last_event = events.default
+	elif event.is_action("A"):
+		walk_player("paper")
 
+func walk_player(target: String):
+	if target in ["computer", "default", "paper"]:
+		walk_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		walk_tween.tween_property($Camera3D, "position", camera_positions.get(target).position, MOVEMENT_SPEED)
+		walk_tween.parallel().tween_property($Camera3D, "rotation_degrees", camera_positions.get(target).rotation, MOVEMENT_SPEED)
+		current_position = positions.get(target)
+	#if not $AnimationPlayer.is_playing():
+		#if event.is_action("A") and last_event != events.customers:
+			#go_to_customers()
+			#last_event = events.customers
+#
+		#elif event.is_action("D") and last_event != events.desk:
+			#go_to_desk()
+			#last_event = events.desk
+		#
+		#elif event.is_action("S") and last_event != events.default:
+			#go_to_default()
+			#last_event = events.default
+
+
+var dic = {
+		"QueuePosition0": null,
+		"QueuePosition1": null,
+		"QueuePosition2": null,
+		"QueuePosition3": null,
+		"QueuePosition4": null,
+		#"QueuePosition5": null,
+	}
+
+func walk_customers():
+	
+	for x in $CustomersManager/CustomerHolder.get_children():
+		
+		var customer_current_position = x.queue_position
+		var customer_target_position = customer_current_position - 1 
+		if customer_target_position != -1 and!dic["QueuePosition" + str(customer_target_position)]:
+			x.walk(customer_target_position)
+			dic["QueuePosition" + str(customer_target_position)] = x
+			dic["QueuePosition" + str(customer_current_position)] = null
+			
+
+
+func _on_customer_timer_timeout() -> void:
+	walk_customers()
 
 func _on_customers_manager_update_score_counter(new_score: int) -> void:
 	if new_score <= 0:
