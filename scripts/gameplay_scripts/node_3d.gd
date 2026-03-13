@@ -95,7 +95,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action("D"):
 		walk_player("computer")
-		walk_customers()
+		#walk_customers()
 	elif event.is_action("S"):
 		walk_player("default")
 		
@@ -108,18 +108,7 @@ func walk_player(target: String):
 		walk_tween.tween_property($Camera3D, "position", camera_positions.get(target).position, MOVEMENT_SPEED)
 		walk_tween.parallel().tween_property($Camera3D, "rotation_degrees", camera_positions.get(target).rotation, MOVEMENT_SPEED)
 		current_position = positions.get(target)
-	#if not $AnimationPlayer.is_playing():
-		#if event.is_action("A") and last_event != events.customers:
-			#go_to_customers()
-			#last_event = events.customers
-#
-		#elif event.is_action("D") and last_event != events.desk:
-			#go_to_desk()
-			#last_event = events.desk
-		#
-		#elif event.is_action("S") and last_event != events.default:
-			#go_to_default()
-			#last_event = events.default
+
 
 
 var dic = {
@@ -131,21 +120,20 @@ var dic = {
 		#"QueuePosition5": null,
 	}
 
-func walk_customers():
-	
-	for x in $CustomersManager/CustomerHolder.get_children():
-		
-		var customer_current_position = x.queue_position
-		var customer_target_position = customer_current_position - 1 
-		if customer_target_position != -1 and!dic["QueuePosition" + str(customer_target_position)]:
-			x.walk(customer_target_position)
-			dic["QueuePosition" + str(customer_target_position)] = x
-			dic["QueuePosition" + str(customer_current_position)] = null
-			
-
-
-func _on_customer_timer_timeout() -> void:
-	walk_customers()
+#func walk_customers():
+	#
+	#for x in $CustomersManager/CustomerHolder.get_children():
+		#
+		#var customer_current_position = x.queue_position
+		#var customer_target_position = customer_current_position - 1 
+		#if customer_target_position != -1 and!dic["QueuePosition" + str(customer_target_position)]:
+			#x.walk(customer_target_position)
+			#dic["QueuePosition" + str(customer_target_position)] = x
+			#dic["QueuePosition" + str(customer_current_position)] = null
+#
+#
+#func _on_customer_timer_timeout() -> void:
+	#walk_customers()
 
 func _on_customers_manager_update_score_counter(new_score: int) -> void:
 	if new_score <= 0:

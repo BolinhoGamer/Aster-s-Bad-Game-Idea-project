@@ -334,6 +334,7 @@ one_shot = true
 
 [node name="CustomerQueueManager" type="Node3D" parent="CustomersManager" unique_id=582914113]
 unique_name_in_owner = true
+visible = false
 
 [node name="Position0" type="Node3D" parent="CustomersManager/CustomerQueueManager" unique_id=1572843843]
 
@@ -348,6 +349,7 @@ unique_name_in_owner = true
 [node name="Position5" type="Node3D" parent="CustomersManager/CustomerQueueManager" unique_id=1264353222]
 
 [node name="CustomerHolder" type="Node3D" parent="CustomersManager" unique_id=1061778953]
+visible = false
 
 [node name="Customer1" type="Node3D" parent="CustomersManager/CustomerHolder" unique_id=462936024]
 script = SubResource("GDScript_101mb")
