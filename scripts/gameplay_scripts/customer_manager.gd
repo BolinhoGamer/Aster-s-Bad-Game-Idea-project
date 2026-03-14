@@ -86,13 +86,7 @@ func _on_score_change(change):
 
 
 func _on_customer_wait_timer_timeout() -> void:
-	#Input.action_press("make customer leave")
-	emit_signal("customer_leaving")
-	is_customer_walking = true
-	
-	customer_walk_timer.start(2)
-	await customer_walk_timer.timeout
-	is_customer_walking = false
-	
-	current_customer.queue_free()
-	customer_spawn_loop()
+	var InputAction = InputEventAction.new()
+	InputAction.action = "make customer leave"
+	InputAction.pressed = true
+	Input.parse_input_event(InputAction)

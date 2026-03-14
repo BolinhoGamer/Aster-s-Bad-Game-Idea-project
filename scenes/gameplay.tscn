@@ -6,9 +6,12 @@
 [ext_resource type="Script" uid="uid://b0dsxmraa6lfx" path="res://scripts/gameplay_scripts/customer_manager.gd" id="3_l1v76"]
 [ext_resource type="Texture2D" uid="uid://bmkr4vh0pwxvq" path="res://assets/images/Untitled_Artwork.png" id="3_ocj2s"]
 [ext_resource type="Script" uid="uid://ckhelw0nbr4rn" path="res://scripts/gameplay_scripts/score_counter.gd" id="4_din8e"]
-[ext_resource type="Script" uid="uid://bi7bdfaqbvv6o" path="res://scenes/computer.gd" id="4_e124b"]
+[ext_resource type="Script" uid="uid://bi7bdfaqbvv6o" path="res://scripts/gameplay_scripts/computer.gd" id="4_e124b"]
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="6_din8e"]
 [ext_resource type="Script" uid="uid://cfwttc8yi4pit" path="res://scripts/main_menu_scripts/debug_text.gd" id="7_4bh5q"]
+[ext_resource type="Script" uid="uid://bcdmyaaxc4t2u" path="res://scripts/gameplay_scripts/on_screen_ui.gd" id="8_hbo4f"]
+[ext_resource type="Script" uid="uid://cqqkb122020ih" path="res://scripts/gameplay_scripts/pause_menu.gd" id="11_qixtg"]
+[ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://scripts/main_menu_scripts/menu_button_super.gd" id="12_nt65e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -63,7 +66,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/Transition:self_modulate")
+tracks/3/path = NodePath("CanvasLayer/OnScreenUI/Transition:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -75,7 +78,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/Transition:visible")
+tracks/4/path = NodePath("CanvasLayer/OnScreenUI/Transition:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -93,7 +96,7 @@ resource_name = "transition screen fade in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/Transition:self_modulate")
+tracks/0/path = NodePath("CanvasLayer/OnScreenUI/Transition:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -105,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/Transition:visible")
+tracks/1/path = NodePath("CanvasLayer/OnScreenUI/Transition:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -120,7 +123,7 @@ resource_name = "transition screen fade out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/Transition:self_modulate")
+tracks/0/path = NodePath("CanvasLayer/OnScreenUI/Transition:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +135,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/Transition:visible")
+tracks/1/path = NodePath("CanvasLayer/OnScreenUI/Transition:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -364,21 +367,22 @@ texture = ExtResource("6_din8e")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1091460538]
 follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1181469613]
+[node name="OnScreenUI" type="Control" parent="CanvasLayer" unique_id=1181469613]
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 174.0
 offset_bottom = 181.0
+script = ExtResource("8_hbo4f")
 
-[node name="ScoreCounter" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=1858008801]
+[node name="ScoreCounter" type="RichTextLabel" parent="CanvasLayer/OnScreenUI" unique_id=1858008801]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 text = "300"
 script = ExtResource("4_din8e")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=227605656]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OnScreenUI" unique_id=227605656]
 z_index = 4096
 layout_direction = 2
 layout_mode = 0
@@ -388,14 +392,75 @@ offset_right = 1152.0
 offset_bottom = 52.0
 script = ExtResource("7_4bh5q")
 
-[node name="Transition" type="ColorRect" parent="CanvasLayer/Control" unique_id=1716961875]
+[node name="Transition" type="ColorRect" parent="CanvasLayer/OnScreenUI" unique_id=1716961875]
+z_index = -10
 layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 1)
 
+[node name="PauseMenu" type="Control" parent="CanvasLayer/OnScreenUI" unique_id=565806829]
+anchors_preset = 0
+offset_left = 442.0
+offset_top = 299.0
+offset_right = 482.0
+offset_bottom = 339.0
+script = ExtResource("11_qixtg")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/OnScreenUI/PauseMenu" unique_id=890054373]
+layout_mode = 0
+offset_left = -119.0
+offset_top = -221.0
+offset_right = 310.0
+offset_bottom = 266.0
+color = Color(0.17254902, 0.17254902, 0.17254902, 0.79607844)
+
+[node name="ResumeGameButton" type="Button" parent="CanvasLayer/OnScreenUI/PauseMenu" unique_id=872030598]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -184.0
+offset_right = 134.0
+offset_bottom = -132.0
+text = "resume game"
+script = ExtResource("12_nt65e")
+metadata/_custom_type_script = "uid://d1hx6pkuxodf3"
+
+[node name="RestartShiftButton" type="Button" parent="CanvasLayer/OnScreenUI/PauseMenu" unique_id=81261880]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -69.0
+offset_right = 133.0
+offset_bottom = -17.0
+text = "restart shift"
+script = ExtResource("12_nt65e")
+metadata/_custom_type_script = "uid://d1hx6pkuxodf3"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/OnScreenUI/PauseMenu" unique_id=338739744]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 61.0
+offset_right = 151.0
+offset_bottom = 113.0
+text = "exit to main menu"
+script = ExtResource("12_nt65e")
+metadata/_custom_type_script = "uid://d1hx6pkuxodf3"
+
+[node name="QuitGameButton" type="Button" parent="CanvasLayer/OnScreenUI/PauseMenu" unique_id=1558583904]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 168.0
+offset_right = 134.0
+offset_bottom = 220.0
+text = "quit game"
+script = ExtResource("12_nt65e")
+metadata/_custom_type_script = "uid://d1hx6pkuxodf3"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="update_score_counter" from="CustomersManager" to="." method="_on_customers_manager_update_score_counter"]
-[connection signal="update_score_counter" from="CustomersManager" to="CanvasLayer/Control/ScoreCounter" method="_on_customers_manager_update_score_counter"]
+[connection signal="update_score_counter" from="CustomersManager" to="CanvasLayer/OnScreenUI/ScoreCounter" method="_on_customers_manager_update_score_counter"]
 [connection signal="timeout" from="CustomersManager/CustomerWaitTimer" to="CustomersManager" method="_on_customer_wait_timer_timeout"]
 [connection signal="timeout" from="CustomersManager/FinalRushTimer" to="." method="_on_final_rush_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/ResumeGameButton" to="CanvasLayer/OnScreenUI/PauseMenu" method="_on_resume_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/RestartShiftButton" to="." method="_on_restart_shift_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/QuitGameButton" to="CanvasLayer/OnScreenUI/PauseMenu" method="_on_exit_game_button_pressed"]

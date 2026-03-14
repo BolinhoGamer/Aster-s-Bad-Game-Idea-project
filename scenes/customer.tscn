@@ -31,7 +31,7 @@ _data = {
 &"customer_walk": SubResource("Animation_xss0h")
 }
 
-[node name="customer" type="CharacterBody3D" unique_id=1692440781]
+[node name="Customer" type="CharacterBody3D" unique_id=1692440781]
 script = ExtResource("1_xss0h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=318708477]

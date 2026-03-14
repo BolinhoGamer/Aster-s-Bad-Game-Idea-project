@@ -14,6 +14,7 @@ enum events{
 	customers,
 	default
 }
+
 enum positions{computer, default, paper}
 var last_event = events.desk
 var current_position = positions.default
@@ -34,7 +35,9 @@ var camera_positions = {
 var walk_tween: Tween
 enum night_end{
 	lose,
-	win
+	win,
+	main_menu_pause,
+	restart_pause
 }
 
 var exit : int
@@ -93,13 +96,13 @@ func _input(event: InputEvent) -> void:
 	if walk_tween and walk_tween.is_running():
 		return
 	
-	if event.is_action("D"):
+	if event.is_action("move to computer"):
 		walk_player("computer")
 		#walk_customers()
-	elif event.is_action("S"):
+	elif event.is_action("move to client"):
 		walk_player("default")
 		
-	elif event.is_action("A"):
+	elif event.is_action("move to paper"):
 		walk_player("paper")
 
 func walk_player(target: String):
@@ -135,11 +138,6 @@ var dic = {
 #func _on_customer_timer_timeout() -> void:
 	#walk_customers()
 
-func _on_customers_manager_update_score_counter(new_score: int) -> void:
-	if new_score <= 0:
-		animationplayer.play("transition screen fade in")
-		exit = night_end.lose
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "transition screen fade in":
@@ -147,8 +145,30 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
 		elif exit == night_end.win:
 			get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
+		elif exit == night_end.main_menu_pause:
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		elif exit == night_end.restart_pause:
+			get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
+
+
+func _on_customers_manager_update_score_counter(new_score: int) -> void:
+	if new_score <= 0:
+		animationplayer.play("transition screen fade in")
+		exit = night_end.lose
 
 
 func _on_final_rush_timer_timeout() -> void:
 	animationplayer.play("transition screen fade in")
 	exit = night_end.win
+
+
+func _on_main_menu_button_pressed() -> void:
+	Engine.time_scale = 1
+	animationplayer.play("transition screen fade in")
+	exit = night_end.main_menu_pause
+
+
+func _on_restart_shift_button_pressed() -> void:
+	Engine.time_scale = 1
+	animationplayer.play("transition screen fade in")
+	exit = night_end.restart_pause

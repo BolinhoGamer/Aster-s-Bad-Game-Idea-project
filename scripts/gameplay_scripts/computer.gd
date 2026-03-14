@@ -16,18 +16,18 @@ func _input(event: InputEvent) -> void:
 	# | Computer state manager | #
 	# *------------------------* #
 	
-	if event.is_action("Q"):
+	if event.is_action("change camera to no 1"):
 		state = eComputerState.e_cmp_0
 		print('Q')
 		
-	elif event.is_action("W"):
+	elif event.is_action("change camera to no 2"):
 		state = eComputerState.e_cmp_1
 		print('W')
 	
-	elif event.is_action("E"):
+	elif event.is_action("change camera to no 3"):
 		state = eComputerState.e_cmp_2
 		print('E')
 		
-	elif event.is_action("R"):
+	elif event.is_action("change camera to no 4"):
 		state = eComputerState.e_cmp_3
 		print('R')

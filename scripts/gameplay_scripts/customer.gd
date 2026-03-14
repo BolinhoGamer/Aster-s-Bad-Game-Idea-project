@@ -20,7 +20,7 @@ var reward: int
 func _ready() -> void:
 	if (customer_manager != null):
 		score_change.connect(customer_manager._on_score_change)
-	reward = 300
+	reward = 30
 	
 	current_customer_walk_target = customer_walk_targets.customers_window
 	is_moving = true

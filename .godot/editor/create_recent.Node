@@ -1,3 +1,6 @@
+GenericButtonSuper
+ColorRect
+Control
 Node3D
 Sprite3D
 Timer
@@ -5,10 +8,7 @@ AnimationPlayer
 Label
 Button
 CanvasLayer
-ColorRect
 RichTextLabel
-Control
 NavigationAgent3D
 CollisionShape3D
 Area3D
-MeshInstance3D
