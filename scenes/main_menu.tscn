@@ -117,14 +117,15 @@ func _on_volume_slider_value_changed(value: float) -> void:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), -1000000)
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), value)
-	
-
+		$AudioSettings/VolumeSlider.value = value
+		
 
 func _on_music_slider_value_changed(value: float) -> void:
 	if value <= -15.0:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), -1000000)
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), value)
+		$AudioSettings/MusicSlider.value = value
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
@@ -132,6 +133,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"SFX\"), -1000000)
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"SFX\"), value)
+		$AudioSettings/SFXSlider.value = value
 "
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_5pajh"]

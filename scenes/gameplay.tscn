@@ -316,6 +316,7 @@ stream = ExtResource("6_407ns")
 volume_db = -24.0
 unit_size = 4.0
 autoplay = true
+bus = &"SFX"
 
 [node name="Sprite3D4" type="Sprite3D" parent="." unique_id=150005623]
 transform = Transform3D(-8.742278e-09, 0.4, -8.742278e-09, 0, -1.7484556e-08, -0.2, -0.2, -1.7484556e-08, 3.821371e-16, -2.695, 1.04, 0.22884035)
