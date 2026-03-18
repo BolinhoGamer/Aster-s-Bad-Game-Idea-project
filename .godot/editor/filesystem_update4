@@ -1,2 +1,5 @@
-res://scripts/gameplay_scripts/node_3d.gd
+res://scripts/main_menu_scripts/menu_return_button.gd
+res://scenes/main_menu.tscn
+res://scenes/buzz.gd
 res://scenes/gameplay.tscn
+res://scripts/main_menu_scripts/menu_play_button.gd

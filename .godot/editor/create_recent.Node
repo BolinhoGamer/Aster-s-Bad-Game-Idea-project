@@ -1,14 +1,14 @@
+AudioStreamPlayer
+Timer
+AudioStreamPlayer3D
 GenericButtonSuper
 ColorRect
 Control
 Node3D
 Sprite3D
-Timer
 AnimationPlayer
 Label
 Button
 CanvasLayer
 RichTextLabel
 NavigationAgent3D
-CollisionShape3D
-Area3D

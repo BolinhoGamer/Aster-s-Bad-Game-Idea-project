@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://scripts/main_menu_scripts/menu_play_button.gd" id="2_lgwnu"]
 [ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://scripts/main_menu_scripts/menu_credits_button.gd" id="3_flqon"]
 [ext_resource type="Texture2D" uid="uid://dwt8waxbn8v0g" path="res://assets/images/credits.png" id="4_5pajh"]
+[ext_resource type="AudioStream" uid="uid://d2y4dgdle10ou" path="res://assets/sounds/button select sfx (1).mp3" id="4_j7ex8"]
 [ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://scripts/main_menu_scripts/menu_return_button.gd" id="4_rcqid"]
 [ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://scripts/main_menu_scripts/menu_settings_button.gd" id="5_1ajci"]
 [ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://scripts/main_menu_scripts/menu_quit_button.gd" id="6_7b55j"]
@@ -171,6 +172,10 @@ offset_right = 547.0
 offset_bottom = 302.0
 scale = Vector2(2.1060119, 2.1456885)
 color = Color(0, 0, 0, 1)
+
+[node name="ButtonClicked" type="AudioStreamPlayer" parent="MenuPlayButton" unique_id=1554563470]
+stream = ExtResource("4_j7ex8")
+volume_db = -12.0
 
 [node name="MenuSettingsButton" type="Button" parent="." unique_id=1318701100]
 layout_mode = 0
@@ -346,6 +351,7 @@ scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
 [connection signal="animation_finished" from="MenuPlayButton/Transition" to="MenuPlayButton" method="_on_transition_animation_finished"]
+[connection signal="pressed" from="MenuCreditsReturnButton2" to="MenuCreditsReturnButton2" method="_on_pressed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="Settings/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]

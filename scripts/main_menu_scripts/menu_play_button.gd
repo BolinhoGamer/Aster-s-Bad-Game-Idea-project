@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _pressed() -> void:
 	anim_player.play("fade in")
+	$ButtonClicked.play()
 
 func _on_transition_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade in":

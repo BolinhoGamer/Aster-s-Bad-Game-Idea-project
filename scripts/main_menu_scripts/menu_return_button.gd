@@ -2,12 +2,17 @@ extends GenericButtonSuper
 
 
 var was_pressed := false
+
 func _pressed() -> void:
-	if was_pressed == false:
-		was_pressed = true
-	#a second press means cancel listening
-	else:
-		was_pressed = false
+	if get_parent().name == "MainMenu":
+		get_parent().state = get_parent().eGlobalGameState.e_ggs_on_main_menu
+	elif get_parent().get_parent().name == "MainMenu":
+		get_parent().get_parent().state = get_parent().get_parent().eGlobalGameState.e_ggs_on_main_menu
+	#if was_pressed == false:
+		#was_pressed = true
+	##a second press means cancel listening
+	#else:
+		#was_pressed = false
 
 #(mutedfish)to much work for me rn, will do later
 #func _input(event: InputEvent) -> void:
