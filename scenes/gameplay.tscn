@@ -400,6 +400,7 @@ offset_bottom = 650.0
 color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer/OnScreenUI" unique_id=565806829]
+visible = false
 anchors_preset = 0
 offset_left = 442.0
 offset_top = 299.0

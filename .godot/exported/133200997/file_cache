@@ -1,5 +1,6 @@
 res://assets/sounds/default_bus_layout.tres::0d5de9333ceaa29349c38a2348067336::1773354996::res://.godot/exported/133200997/export-62f185b66f530cef8f934d91a3005581-default_bus_layout.res
-res://scenes/gameplay.tscn::1e66d2a6a958c7fe492bc5bde5d2a819::1773356749::res://.godot/exported/133200997/export-073adc752d2c0a165c14d2303ed092c9-gameplay.scn
-res://scenes/main_menu.tscn::66d934b0a4caf9d98ce00accbe181913::1773355632::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
-res://scenes/customer.tscn::c24c09ed87118c8029c75ca9a390efbb::1773356913::res://.godot/exported/133200997/export-ed9ef9baa2c13bd273a948a15356ae15-customer.scn
+res://scenes/gameplay.tscn::bd9104d662e2b0f491743ee43e000c2b::1773530820::res://.godot/exported/133200997/export-073adc752d2c0a165c14d2303ed092c9-gameplay.scn
+res://scenes/main_menu.tscn::5c046106f239bce380ced6ec6aba15f4::1773443615::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
+res://scenes/customer.tscn::e3af98e88802cfd319d2770d0b09284f::1773509602::res://.godot/exported/133200997/export-ed9ef9baa2c13bd273a948a15356ae15-customer.scn
 res://scenes/game_over_screen.tscn::e5f44323d7f7d73080a1d682e8891650::1773355649::res://.godot/exported/133200997/export-e22825d93e7ddd42eb50ee3deead56b6-game_over_screen.scn
+res://scenes/win_screen.tscn::398283bca746385dbc0bd05cb0f6282d::1773367360::res://.godot/exported/133200997/export-4446fc4d426ca974deeefccb08735c1c-win_screen.scn

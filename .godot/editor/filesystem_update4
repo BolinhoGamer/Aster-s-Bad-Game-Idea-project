@@ -1,2 +1,3 @@
-res://scripts/gameplay_scripts/node_3d.gd
-res://scenes/gameplay.tscn
+res://scenes/main_menu.tscn
+res://scripts/main_menu_scripts/menu_return_button.gd
+res://scripts/main_menu_scripts/menu_settings_button.gd
