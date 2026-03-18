@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 AudioStreamPlayer
 Timer
 AudioStreamPlayer3D
+=======
+OptionButton
+Control
+>>>>>>> 8c3adada3b0667691a0db4bb2d102abfbc33447e
 GenericButtonSuper
 ColorRect
-Control
 Node3D
 Sprite3D
 AnimationPlayer

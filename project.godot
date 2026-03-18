@@ -30,6 +30,7 @@ GlobalScript="*res://global_script.gd"
 [display]
 
 window/size/borderless=true
+window/stretch/mode="viewport"
 
 [editor]
 

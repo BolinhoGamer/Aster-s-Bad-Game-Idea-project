@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 res://scripts/main_menu_scripts/menu_return_button.gd
 res://scenes/main_menu.tscn
 res://scenes/buzz.gd
 res://scenes/gameplay.tscn
 res://scripts/main_menu_scripts/menu_play_button.gd
+=======
+res://scenes/main_menu.tscn
+res://scripts/main_menu_scripts/menu_return_button.gd
+res://scripts/main_menu_scripts/menu_settings_button.gd
+>>>>>>> 8c3adada3b0667691a0db4bb2d102abfbc33447e

@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://d0gok07tixq80" path="res://scripts/main_menu_scripts/menu_play_button.gd" id="2_lgwnu"]
 [ext_resource type="Script" uid="uid://bl3lkvnkfu3i8" path="res://scripts/main_menu_scripts/menu_credits_button.gd" id="3_flqon"]
 [ext_resource type="Texture2D" uid="uid://dwt8waxbn8v0g" path="res://assets/images/credits.png" id="4_5pajh"]
-[ext_resource type="AudioStream" uid="uid://d2y4dgdle10ou" path="res://assets/sounds/button select sfx (1).mp3" id="4_j7ex8"]
 [ext_resource type="Script" uid="uid://ckrgk7t6meryj" path="res://scripts/main_menu_scripts/menu_return_button.gd" id="4_rcqid"]
 [ext_resource type="Script" uid="uid://ybvd4gyi85ah" path="res://scripts/main_menu_scripts/menu_settings_button.gd" id="5_1ajci"]
 [ext_resource type="Script" uid="uid://c88hcbgbbax2b" path="res://scripts/main_menu_scripts/menu_quit_button.gd" id="6_7b55j"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://clo2y2u5c2cih" path="res://assets/images/MainMenuArtFrame1.png" id="10_hstxw"]
 [ext_resource type="Texture2D" uid="uid://oy51dvc11oe0" path="res://assets/images/MainMenuArtFrame2.png" id="11_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://cshg0ixxv7df0" path="res://assets/images/menu_background.png" id="12_flqon"]
+[ext_resource type="Script" uid="uid://i4i7gijxtbns" path="res://scripts/main_menu_scripts/settings_rebind_action_button.gd" id="13_5pajh"]
 
 [sub_resource type="Animation" id="Animation_4vnjk"]
 length = 0.001
@@ -108,9 +108,9 @@ _data = {
 script/source = "extends Control
 
 func _ready() -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), $VolumeSlider.value)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), $VolumeSlider.value)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"SFX\"), $VolumeSlider.value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), $AudioSettings/VolumeSlider.value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), $AudioSettings/MusicSlider.value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"SFX\"), $AudioSettings/SFXSlider.value)
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	if value <= -15.0:
@@ -173,10 +173,6 @@ offset_bottom = 302.0
 scale = Vector2(2.1060119, 2.1456885)
 color = Color(0, 0, 0, 1)
 
-[node name="ButtonClicked" type="AudioStreamPlayer" parent="MenuPlayButton" unique_id=1554563470]
-stream = ExtResource("4_j7ex8")
-volume_db = -12.0
-
 [node name="MenuSettingsButton" type="Button" parent="." unique_id=1318701100]
 layout_mode = 0
 offset_left = 841.0
@@ -224,6 +220,17 @@ text = "RETURN TO MAIN MENU"
 flat = true
 script = ExtResource("4_rcqid")
 
+[node name="MenuSettingsReturnButton" type="Button" parent="." unique_id=323474556]
+layout_mode = 0
+offset_left = 1958.0
+offset_top = 510.0
+offset_right = 2154.0
+offset_bottom = 580.0
+pivot_offset = Vector2(90, 35)
+text = "RETURN TO MAIN MENU"
+flat = true
+script = ExtResource("4_rcqid")
+
 [node name="Ideophobia" type="AudioStreamPlayer2D" parent="." unique_id=93113850]
 position = Vector2(576, 324)
 
@@ -245,18 +252,12 @@ offset_bottom = 648.0
 mouse_filter = 2
 script = SubResource("GDScript_7b55j")
 
-[node name="MenuSettingsReturnButton" type="Button" parent="Settings" unique_id=323474556]
-layout_mode = 0
-offset_left = 806.0
-offset_top = 510.0
-offset_right = 1002.0
-offset_bottom = 580.0
-pivot_offset = Vector2(90, 35)
-text = "RETURN TO MAIN MENU"
-flat = true
-script = ExtResource("4_rcqid")
+[node name="AudioSettings" type="Control" parent="Settings" unique_id=760643222]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="VolumeSlider" type="HSlider" parent="Settings" unique_id=1796370450]
+[node name="VolumeSlider" type="HSlider" parent="Settings/AudioSettings" unique_id=1796370450]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 216.0
@@ -267,7 +268,7 @@ max_value = 5.0
 step = 0.5
 value = -5.0
 
-[node name="VolumeLabel" type="RichTextLabel" parent="Settings/VolumeSlider" unique_id=1649702473]
+[node name="VolumeLabel" type="RichTextLabel" parent="Settings/AudioSettings/VolumeSlider" unique_id=1649702473]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -275,7 +276,7 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "Master Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Settings" unique_id=1062337875]
+[node name="MusicSlider" type="HSlider" parent="Settings/AudioSettings" unique_id=1062337875]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 316.0
@@ -286,7 +287,7 @@ max_value = 5.0
 step = 0.5
 value = -5.0
 
-[node name="MusicLabel" type="RichTextLabel" parent="Settings/MusicSlider" unique_id=602833952]
+[node name="MusicLabel" type="RichTextLabel" parent="Settings/AudioSettings/MusicSlider" unique_id=602833952]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -294,7 +295,7 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "music"
 
-[node name="SFXSlider" type="HSlider" parent="Settings" unique_id=8409651]
+[node name="SFXSlider" type="HSlider" parent="Settings/AudioSettings" unique_id=8409651]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 416.0
@@ -303,9 +304,9 @@ offset_bottom = 432.0
 min_value = -15.0
 max_value = 5.0
 step = 0.5
-value = 5.0
+value = -5.0
 
-[node name="SFXLabel" type="RichTextLabel" parent="Settings/SFXSlider" unique_id=1244029601]
+[node name="SFXLabel" type="RichTextLabel" parent="Settings/AudioSettings/SFXSlider" unique_id=1244029601]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -41.0
@@ -313,7 +314,12 @@ offset_right = 209.0
 offset_bottom = -1.0
 text = "SFX"
 
-[node name="Button" type="Button" parent="Settings" unique_id=411710382]
+[node name="KeyRebindSettings" type="Control" parent="Settings" unique_id=124256902]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Settings/KeyRebindSettings" unique_id=411710382]
 layout_mode = 0
 offset_left = 1084.0
 offset_top = 61.0
@@ -322,15 +328,22 @@ offset_bottom = 92.0
 pivot_offset = Vector2(90, 35)
 text = "A"
 flat = true
-script = ExtResource("4_rcqid")
+script = ExtResource("13_5pajh")
 
-[node name="SFXLabel" type="RichTextLabel" parent="Settings/Button" unique_id=1766450563]
+[node name="SFXLabel" type="RichTextLabel" parent="Settings/KeyRebindSettings/Button" unique_id=1766450563]
 layout_mode = 0
 offset_left = -158.0
 offset_top = 4.0
 offset_right = 47.0
 offset_bottom = 44.0
 text = "Move to paper"
+
+[node name="OptionButton" type="OptionButton" parent="Settings" unique_id=626990332]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 448.0
+offset_right = 572.0
+offset_bottom = 468.0
 
 [node name="MainMenuArt" type="Sprite2D" parent="." unique_id=494515996]
 z_index = -2
@@ -351,8 +364,7 @@ scale = Vector2(0.3945206, 0.3946407)
 texture = ExtResource("12_flqon")
 
 [connection signal="animation_finished" from="MenuPlayButton/Transition" to="MenuPlayButton" method="_on_transition_animation_finished"]
-[connection signal="pressed" from="MenuCreditsReturnButton2" to="MenuCreditsReturnButton2" method="_on_pressed"]
-[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="Settings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
-[connection signal="value_changed" from="Settings/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Settings/SFXSlider" to="Settings" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Settings/AudioSettings/VolumeSlider" to="Settings" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/AudioSettings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/AudioSettings/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Settings/AudioSettings/SFXSlider" to="Settings" method="_on_sfx_slider_value_changed"]
