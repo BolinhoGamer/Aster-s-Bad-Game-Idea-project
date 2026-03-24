@@ -1,18 +1,15 @@
-<<<<<<< HEAD
+Window
+CheckBox
+TextureRect
+Tree
+Panel
+Control
+Container
+Sprite2D
+HBoxContainer
+Sprite3D
 AudioStreamPlayer
 Timer
 AudioStreamPlayer3D
-=======
 OptionButton
-Control
->>>>>>> 8c3adada3b0667691a0db4bb2d102abfbc33447e
 GenericButtonSuper
-ColorRect
-Node3D
-Sprite3D
-AnimationPlayer
-Label
-Button
-CanvasLayer
-RichTextLabel
-NavigationAgent3D

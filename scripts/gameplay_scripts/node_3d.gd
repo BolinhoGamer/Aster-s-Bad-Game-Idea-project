@@ -152,6 +152,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_customers_manager_update_score_counter(new_score: int) -> void:
+	score = new_score
 	if new_score <= 0:
 		animationplayer.play("transition screen fade in")
 		exit = night_end.lose

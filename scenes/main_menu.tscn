@@ -134,6 +134,14 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"SFX\"), value)
 		$AudioSettings/SFXSlider.value = value
+
+
+func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
+	#print(get_window())
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 "
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_5pajh"]
@@ -347,6 +355,14 @@ offset_top = 448.0
 offset_right = 572.0
 offset_bottom = 468.0
 
+[node name="FullscreenCheckBox" type="CheckBox" parent="Settings" unique_id=808922583]
+layout_mode = 0
+offset_left = 913.0
+offset_top = 377.0
+offset_right = 1020.0
+offset_bottom = 408.0
+text = "Fullscreen"
+
 [node name="MainMenuArt" type="Sprite2D" parent="." unique_id=494515996]
 z_index = -2
 position = Vector2(576, 324.00003)
@@ -370,3 +386,4 @@ texture = ExtResource("12_flqon")
 [connection signal="value_changed" from="Settings/AudioSettings/VolumeSlider" to="Settings" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="Settings/AudioSettings/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="Settings/AudioSettings/SFXSlider" to="Settings" method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="Settings/FullscreenCheckBox" to="Settings" method="_on_fullscreen_check_box_toggled"]

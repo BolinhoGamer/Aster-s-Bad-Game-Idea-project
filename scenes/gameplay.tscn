@@ -8,11 +8,14 @@
 [ext_resource type="Script" uid="uid://ckhelw0nbr4rn" path="res://scripts/gameplay_scripts/score_counter.gd" id="4_din8e"]
 [ext_resource type="Script" uid="uid://bi7bdfaqbvv6o" path="res://scripts/gameplay_scripts/computer.gd" id="4_e124b"]
 [ext_resource type="AudioStream" uid="uid://byylmxeup2pwv" path="res://assets/sounds/Sfx (1).ogg" id="6_407ns"]
+[ext_resource type="Texture2D" uid="uid://g3wwknmt3m5t" path="res://assets/images/Untitled_Artwork2.png" id="6_bhmdk"]
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="6_din8e"]
 [ext_resource type="Script" uid="uid://cfwttc8yi4pit" path="res://scripts/main_menu_scripts/debug_text.gd" id="7_4bh5q"]
 [ext_resource type="Script" uid="uid://bcdmyaaxc4t2u" path="res://scripts/gameplay_scripts/on_screen_ui.gd" id="8_hbo4f"]
 [ext_resource type="Script" uid="uid://cqqkb122020ih" path="res://scripts/gameplay_scripts/pause_menu.gd" id="11_qixtg"]
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://scripts/main_menu_scripts/menu_button_super.gd" id="12_nt65e"]
+[ext_resource type="Script" uid="uid://c2m036v8rtp57" path="res://scenes/star_container.gd" id="15_s5y6v"]
+[ext_resource type="Texture2D" uid="uid://dn33svppxhx8c" path="res://star.tres" id="16_407ns"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -25,6 +28,14 @@ region = Rect2(1625.3652, 2282.1938, 1202.1523, 717.80615)
 [sub_resource type="AtlasTexture" id="AtlasTexture_din8e"]
 atlas = ExtResource("3_ocj2s")
 region = Rect2(1306.5436, 87.45269, 1298.432, 1055.9935)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5y6v"]
+atlas = ExtResource("6_bhmdk")
+region = Rect2(1228.7407, 742.205, 1517.7671, 908.9046)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhmdk"]
+atlas = ExtResource("6_bhmdk")
+region = Rect2(60.517273, 421.86133, 537.83575, 1792.7512)
 
 [sub_resource type="Animation" id="Animation_r3fl7"]
 length = 0.001
@@ -287,6 +298,10 @@ func walk(target_queue_position: int):
 	queue_position = target_queue_position
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_407ns"]
+atlas = ExtResource("6_bhmdk")
+region = Rect2(1352, 2247, 290, 593)
+
 [node name="Node3D" type="Node3D" unique_id=1458901737]
 script = ExtResource("1_noarx")
 
@@ -306,8 +321,7 @@ transparent = false
 texture = SubResource("AtlasTexture_4bh5q")
 
 [node name="Computer" type="Sprite3D" parent="." unique_id=1365186600]
-transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -2.5206544, 1.537897, -2.4641595)
-billboard = 2
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -3.0508041, 1.537897, -2.4641595)
 texture = SubResource("AtlasTexture_din8e")
 script = ExtResource("4_e124b")
 
@@ -318,10 +332,18 @@ unit_size = 4.0
 autoplay = true
 bus = &"SFX"
 
+[node name="Sprite3D" type="Sprite3D" parent="Computer" unique_id=1864430058]
+transform = Transform3D(1, 4.3702954e-08, 4.4569603e-08, -4.370296e-08, -0.019633744, 0.99980724, 4.4569603e-08, -0.99980724, -0.019633744, -1.9073486e-06, -5.030261, 4.135538)
+texture = SubResource("AtlasTexture_s5y6v")
+
 [node name="Sprite3D4" type="Sprite3D" parent="." unique_id=150005623]
 transform = Transform3D(-8.742278e-09, 0.4, -8.742278e-09, 0, -1.7484556e-08, -0.2, -0.2, -1.7484556e-08, 3.821371e-16, -2.695, 1.04, 0.22884035)
 render_priority = 2
 texture = ExtResource("1_a202f")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D4" unique_id=2104943626]
+transform = Transform3D(-0.050000004, 7.54979e-09, 1.323489e-23, -7.54979e-09, -0.050000004, -4.440892e-16, -7.2791894e-23, -4.440892e-16, 0.050000004, 1.1890858, 0, 0)
+texture = SubResource("AtlasTexture_bhmdk")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2028863731]
 transform = Transform3D(-4.371139e-08, 0.86602545, 0.49999997, 0, 0.49999997, -0.86602545, -1, -3.7855173e-08, -2.1855692e-08, -1.095, 1.629, 0.22)
@@ -463,6 +485,39 @@ offset_bottom = 220.0
 text = "quit game"
 script = ExtResource("12_nt65e")
 metadata/_custom_type_script = "uid://d1hx6pkuxodf3"
+
+[node name="StarContainer" type="HBoxContainer" parent="CanvasLayer/OnScreenUI" unique_id=403929757]
+layout_mode = 0
+offset_left = 9.000015
+offset_top = 575.0
+offset_right = 3174.0
+offset_bottom = 1223.0
+scale = Vector2(0.1, 0.1)
+script = ExtResource("15_s5y6v")
+
+[node name="Star1" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=1301121269]
+layout_mode = 2
+texture = ExtResource("16_407ns")
+
+[node name="Star2" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=2059995748]
+layout_mode = 2
+texture = ExtResource("16_407ns")
+
+[node name="Star3" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=1567625707]
+layout_mode = 2
+texture = ExtResource("16_407ns")
+
+[node name="Star4" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=1105576836]
+layout_mode = 2
+texture = ExtResource("16_407ns")
+
+[node name="Star5" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=567080400]
+layout_mode = 2
+texture = ExtResource("16_407ns")
+
+[node name="HalfStar" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=1199573194]
+layout_mode = 2
+texture = SubResource("AtlasTexture_407ns")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="update_score_counter" from="CustomersManager" to="." method="_on_customers_manager_update_score_counter"]

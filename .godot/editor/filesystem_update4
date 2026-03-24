@@ -1,3 +1,4 @@
-res://scripts/main_menu_scripts/menu_play_button.gd
 res://scenes/gameplay.tscn
+res://scenes/star_container.gd
+res://scripts/gameplay_scripts/node_3d.gd
 res://scenes/main_menu.tscn
