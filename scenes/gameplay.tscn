@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://scripts/main_menu_scripts/menu_button_super.gd" id="12_nt65e"]
 [ext_resource type="Script" uid="uid://c2m036v8rtp57" path="res://scenes/star_container.gd" id="15_s5y6v"]
 [ext_resource type="Texture2D" uid="uid://dn33svppxhx8c" path="res://star.tres" id="16_407ns"]
+[ext_resource type="Script" uid="uid://d1o11c4h7llud" path="res://scenes/sound_manager.gd" id="17_pv71h"]
+[ext_resource type="AudioStream" uid="uid://dskao5p7newt0" path="res://assets/sounds/rain-not-from-pixabay.mp3" id="18_m6b5a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -519,6 +521,18 @@ texture = ExtResource("16_407ns")
 layout_mode = 2
 texture = SubResource("AtlasTexture_407ns")
 
+[node name="SoundManager" type="Node" parent="." unique_id=599895019]
+script = ExtResource("17_pv71h")
+
+[node name="RainSoundEffect" type="AudioStreamPlayer" parent="SoundManager" unique_id=1480011071]
+stream = ExtResource("18_m6b5a")
+volume_db = -26.0
+
+[node name="RainTimer" type="Timer" parent="SoundManager" unique_id=1288593404]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="update_score_counter" from="CustomersManager" to="." method="_on_customers_manager_update_score_counter"]
 [connection signal="update_score_counter" from="CustomersManager" to="CanvasLayer/OnScreenUI/ScoreCounter" method="_on_customers_manager_update_score_counter"]
@@ -528,3 +542,5 @@ texture = SubResource("AtlasTexture_407ns")
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/RestartShiftButton" to="." method="_on_restart_shift_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/QuitGameButton" to="CanvasLayer/OnScreenUI/PauseMenu" method="_on_exit_game_button_pressed"]
+[connection signal="finished" from="SoundManager/RainSoundEffect" to="SoundManager" method="_on_rain_sound_effect_finished"]
+[connection signal="timeout" from="SoundManager/RainTimer" to="SoundManager" method="_on_rain_timer_timeout"]

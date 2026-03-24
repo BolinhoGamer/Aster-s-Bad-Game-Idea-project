@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://b2x0mwnhqlb2s"]
 
 [ext_resource type="Script" uid="uid://dq3etklsg2psl" path="res://scripts/main_menu_scripts/game_over_screen.gd" id="1_iwahs"]
+[ext_resource type="Texture2D" uid="uid://dgkas5f5fqnfw" path="res://assets/images/Fired1.png" id="2_cyfkl"]
+[ext_resource type="Texture2D" uid="uid://dh83q7ueychtb" path="res://assets/images/Fired2.png" id="3_xx0b3"]
+[ext_resource type="Texture2D" uid="uid://d4hcaryyrn40d" path="res://assets/images/Fired3.png" id="4_5i0af"]
+[ext_resource type="Texture2D" uid="uid://dsipwtcxjp280" path="res://assets/images/Fired4.png" id="5_nh6my"]
 
 [sub_resource type="Animation" id="Animation_iwahs"]
 length = 0.001
@@ -88,6 +92,17 @@ _data = {
 &"fade out": SubResource("Animation_jw6e5")
 }
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4tlw3"]
+frames = 4
+speed_scale = 4.0
+frame_0/texture = ExtResource("2_cyfkl")
+frame_1/texture = ExtResource("3_xx0b3")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_5i0af")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_nh6my")
+frame_3/duration = 1.0
+
 [node name="GameOverScreen" type="Control" unique_id=197302460]
 layout_direction = 2
 layout_mode = 3
@@ -111,19 +126,27 @@ scale = Vector2(2.1060119, 2.1456885)
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=729781956]
-offset_left = 473.0
-offset_top = 373.0
-offset_right = 610.0
-offset_bottom = 404.0
+offset_left = 552.0
+offset_top = 548.0
+offset_right = 689.0
+offset_bottom = 579.0
+scale = Vector2(2, 2)
 text = "go back to menu"
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=2059862931]
-offset_left = 490.0
-offset_top = 223.0
-offset_right = 591.0
-offset_bottom = 272.0
+visible = false
+offset_left = 478.0
+offset_top = 386.0
+offset_right = 579.0
+offset_bottom = 435.0
 text = "you died
 womp womp"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1958763138]
+z_index = -2
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("AnimatedTexture_4tlw3")
 
 [connection signal="animation_finished" from="CanvasLayer/Transition" to="." method="_on_transition_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

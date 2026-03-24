@@ -1,6 +1,9 @@
+TextureRect
+Timer
+Node
+AudioStreamPlayer
 Window
 CheckBox
-TextureRect
 Tree
 Panel
 Control
@@ -8,8 +11,4 @@ Container
 Sprite2D
 HBoxContainer
 Sprite3D
-AudioStreamPlayer
-Timer
 AudioStreamPlayer3D
-OptionButton
-GenericButtonSuper

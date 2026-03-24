@@ -2,3 +2,6 @@ res://scenes/gameplay.tscn
 res://scenes/star_container.gd
 res://scripts/gameplay_scripts/node_3d.gd
 res://scenes/main_menu.tscn
+res://scenes/sound_manager.gd
+res://scenes/game_over_screen.tscn
+res://scripts/main_menu_scripts/settings_rebind_action_button.gd
