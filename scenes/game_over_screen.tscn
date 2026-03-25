@@ -147,6 +147,7 @@ womp womp"
 z_index = -2
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 texture = SubResource("AnimatedTexture_4tlw3")
 
 [connection signal="animation_finished" from="CanvasLayer/Transition" to="." method="_on_transition_animation_finished"]
