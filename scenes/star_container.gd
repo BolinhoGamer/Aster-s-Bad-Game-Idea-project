@@ -22,6 +22,6 @@ func _process(_delta: float) -> void:
 		$HalfStar.show()
 
 func _int_to_array(index, temp):
-	if temp.len() < abs(index):
+	if len(str(temp)) < abs(index):
 		return 0
 	return int(str(temp)[index])
