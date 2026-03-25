@@ -6,6 +6,11 @@ extends CharacterBody3D
 @onready var customer_manager := get_parent()
 @onready var is_moving : bool
 
+@onready var customer_data = {
+	"question_type": ["table"].pick_random(),
+	"mood": ["nice"].pick_random(),
+	"amount_of_people": randi_range(1, 4) + randi_range(0, 2)
+}
 const FATHER_SPAWNING_CHANCE := 1
 
 signal score_change(change: int)
@@ -25,12 +30,17 @@ func _ready() -> void:
 		father_spawn.connect(customer_manager._on_father_spawn)
 	reward = 30
 	
+	
+	$SpeechBubble/Question.text = customer_data["question_type"] + ": " + str(customer_data["amount_of_people"])
+	
 	current_customer_walk_target = customer_walk_targets.customers_window
 	is_moving = true
 	timer.start(2)
 
 func _on_timer_timeout() -> void:
 	is_moving = false
+	$SpeechBubble.show()
+	
 	if randf_range(0, 1) <= FATHER_SPAWNING_CHANCE:
 		emit_signal("father_spawn")
 
@@ -65,7 +75,7 @@ func _physics_process(_delta):
 
 func _on_customer_leaving() -> void:
 	emit_signal("score_change", -reward)
-	
+	$SpeechBubble.hide()
 	current_customer_walk_target = customer_walk_targets.exit
 	is_moving = true
 	timer.start(3)

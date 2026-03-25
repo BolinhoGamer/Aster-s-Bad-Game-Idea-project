@@ -304,7 +304,7 @@ func walk(target_queue_position: int):
 atlas = ExtResource("6_bhmdk")
 region = Rect2(1352, 2247, 290, 593)
 
-[node name="Node3D" type="Node3D" unique_id=1458901737]
+[node name="Main" type="Node3D" unique_id=1458901737]
 script = ExtResource("1_noarx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1262354790]

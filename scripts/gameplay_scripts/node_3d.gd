@@ -32,6 +32,50 @@ var camera_positions = {
 		"rotation": Vector3(-85, 90, 0),
 	}
 }
+
+var table_data: = {
+	"1": {
+		"maxSize": 4,
+		"currentCustomersSeated": 0
+	},
+	"2": {
+		"maxSize": 4,
+		"currentCustomersSeated": 0
+	},
+	"3": {
+		"maxSize": 4,
+		"currentCustomersSeated": 0
+	},
+	"4": {
+		"maxSize": 2,
+		"currentCustomersSeated": 0
+	},
+	"5": {
+		"maxSize": 2,
+		"currentCustomersSeated": 0
+	},
+	"6": {
+		"maxSize": 8,
+		"currentCustomersSeated": 0
+	},
+	"7": {
+		"maxSize": 8,
+		"currentCustomersSeated": 0
+	},
+	"8": {
+		"maxSize": 4,
+		"currentCustomersSeated": 0
+	},
+	"9": {
+		"maxSize": 4,
+		"currentCustomersSeated": 0
+	},
+	"0": {
+		"maxSize": 4,
+		"currentCustomersSeated": 0
+	}
+}
+
 var walk_tween: Tween
 enum night_end{
 	lose,

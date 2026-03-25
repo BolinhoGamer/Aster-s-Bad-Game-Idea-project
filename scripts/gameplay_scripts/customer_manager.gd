@@ -15,6 +15,7 @@ signal customer_going_in()
 signal update_score_counter(new_score: int)
 
 var current_customer = null
+
 func _ready() -> void:
 	customer_spawn_loop()
 	
@@ -28,6 +29,7 @@ func customer_spawn_loop() -> void:
 
 var debugvar : float
 var is_customer_walking := false
+
 func customer_spawn() -> void:
 	is_customer_walking = true
 	current_customer = waiting_customer.instantiate()
@@ -39,12 +41,39 @@ func customer_spawn() -> void:
 	customer_walk_timer.start(2)
 	await customer_walk_timer.timeout
 	is_customer_walking = false
+	#handles the time the customer waits based on mood
+	var customer_wait_time = 0
+	match current_customer.customer_data.mood:
+		"nice":
+			customer_wait_time = 20
 	
-	customer_wait_timer.start(2)
+	customer_wait_timer.start(customer_wait_time)
 
 
 func _input(event: InputEvent) -> void:
 	if current_customer != null and is_customer_walking == false:
+		if current_customer.customer_data.question_type == "table":
+			if event.is_action("1"):
+				customer_go_to_table(1, current_customer.customer_data.amount_of_people)
+			elif event.is_action("2"):
+				customer_go_to_table(2, current_customer.customer_data.amount_of_people)
+			elif event.is_action("3"):
+				customer_go_to_table(3, current_customer.customer_data.amount_of_people)
+			elif event.is_action("4"):
+				customer_go_to_table(4, current_customer.customer_data.amount_of_people)
+			elif event.is_action("5"):
+				customer_go_to_table(5, current_customer.customer_data.amount_of_people)
+			elif event.is_action("6"):
+				customer_go_to_table(6, current_customer.customer_data.amount_of_people)
+			elif event.is_action("7"):
+				customer_go_to_table(7, current_customer.customer_data.amount_of_people)
+			elif event.is_action("8"):
+				customer_go_to_table(8, current_customer.customer_data.amount_of_people)
+			elif event.is_action("9"):
+				customer_go_to_table(9, current_customer.customer_data.amount_of_people)
+			elif event.is_action("0"):
+				customer_go_to_table(0, current_customer.customer_data.amount_of_people)
+			
 		if event.is_action("make customer leave") :
 			customer_wait_timer.stop()
 			emit_signal("customer_leaving")
@@ -86,4 +115,15 @@ func _on_customer_wait_timer_timeout() -> void:
 	var InputAction = InputEventAction.new()
 	InputAction.action = "make customer leave"
 	InputAction.pressed = true
+	$CustomerWaitTimer.stop()
 	Input.parse_input_event(InputAction)
+
+
+func customer_go_to_table(table_index, amount_of_people):
+	var current_table_data = $"..".table_data[str(table_index)]
+	if amount_of_people <= current_table_data.maxSize and current_table_data.currentCustomersSeated == 0:
+		print("succesfully moved customers to table")
+		$"..".table_data[str(table_index)].currentCustomersSeated = amount_of_people
+		_on_customer_wait_timer_timeout()
+	else:
+		print("failed to move customers to table")

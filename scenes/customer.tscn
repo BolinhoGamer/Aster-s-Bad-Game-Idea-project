@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="1_ktfjk"]
 [ext_resource type="Script" uid="uid://d3rnanar2pldj" path="res://scripts/gameplay_scripts/customer.gd" id="1_xss0h"]
+[ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://scripts/main_menu_scripts/icon.svg" id="3_8qg4y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fx2s6"]
 
@@ -50,5 +51,15 @@ libraries/ = SubResource("AnimationLibrary_8qg4y")
 wait_time = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1862172474]
+
+[node name="SpeechBubble" type="Sprite3D" parent="." unique_id=8023015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28992736, 0.44857788, 0)
+centered = false
+billboard = 2
+texture = ExtResource("3_8qg4y")
+
+[node name="Question" type="Label3D" parent="SpeechBubble" unique_id=1190831226]
+transform = Transform3D(-0.13839532, 0, 0.99037707, 0, 1, 0, -0.99037707, 0, -0.13839532, 0.2052437, 0.66038704, -0.63879)
+text = "PLACEHLDER"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
