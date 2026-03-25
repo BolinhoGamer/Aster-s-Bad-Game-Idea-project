@@ -1,5 +1,6 @@
 extends Sprite3D
 
+@onready var buzz_sound := $Buzz
 
 enum eComputerState {
 	e_cmp_0,
@@ -9,7 +10,6 @@ enum eComputerState {
 }
 
 var state: eComputerState = eComputerState.e_cmp_0
-
 
 func _input(event: InputEvent) -> void:
 	# *------------------------* #
@@ -31,3 +31,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action("change camera to no 4"):
 		state = eComputerState.e_cmp_3
 		print('R')
+
+func _on_father_spawn():
+	buzz_sound.play()
+	

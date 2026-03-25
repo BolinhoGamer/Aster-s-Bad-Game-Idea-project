@@ -6,9 +6,8 @@ extends Node3D
 
 @onready var customer_wait_timer := $CustomerWaitTimer
 @onready var customer_walk_timer := $CustomerWalkTimer
-@onready var final_rush_timer := $FinalRushTimer
 @onready var main_node := get_parent()
-@onready var score :int = main_node.score
+@onready var score_counter := $"../CanvasLayer/OnScreenUI/ScoreCounter"
 
 signal customer_leaving()
 signal customer_going_in()
@@ -76,11 +75,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_score_change(change):
 	await customer_walk_timer.timeout
-	score += change
-	if score >= 500:
-		score = 500
-		final_rush_timer.start(60)
-	emit_signal("update_score_counter", score)
+	emit_signal("update_score_counter", change)
 	
 	
 
