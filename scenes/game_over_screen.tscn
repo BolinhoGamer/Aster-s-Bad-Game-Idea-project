@@ -126,6 +126,7 @@ scale = Vector2(2.1060119, 2.1456885)
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=729781956]
+z_index = 10
 offset_left = 552.0
 offset_top = 548.0
 offset_right = 689.0

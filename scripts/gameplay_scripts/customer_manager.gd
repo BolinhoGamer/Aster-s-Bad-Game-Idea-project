@@ -8,6 +8,7 @@ extends Node3D
 @onready var customer_walk_timer := $CustomerWalkTimer
 @onready var main_node := get_parent()
 @onready var score_counter := $"../CanvasLayer/OnScreenUI/ScoreCounter"
+@onready var computer := $"../Computer"
 
 signal customer_leaving()
 signal customer_going_in()
@@ -77,8 +78,9 @@ func _on_score_change(change):
 	await customer_walk_timer.timeout
 	emit_signal("update_score_counter", change)
 	
-	
 
+func _on_father_spawn():
+	computer._on_father_spawn()
 
 func _on_customer_wait_timer_timeout() -> void:
 	var InputAction = InputEventAction.new()

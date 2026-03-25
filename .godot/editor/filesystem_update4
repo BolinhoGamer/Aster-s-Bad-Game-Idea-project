@@ -1,1 +1,2 @@
-res://scripts/gameplay_scripts/node_3d.gd
+res://scripts/gameplay_scripts/customer_manager.gd
+res://scenes/game_over_screen.tscn
