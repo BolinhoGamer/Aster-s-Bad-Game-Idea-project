@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _pressed() -> void:
 	anim_player.play("fade in")
+	GlobalScript.shifts = 0
 	# (Cake) I have no idea on what ButtonClicked is, but it doesn't seem to
 	# exist, so it simply just crashes the game. (´。＿。｀)
 	#$ButtonClicked.play()
