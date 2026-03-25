@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 func _process(_delta: float) -> void:
-	var starScore = $"../../..".score
+	var starScore = $"../ScoreCounter".score
 	
 	for x in get_children():
 		x.hide()

@@ -3,7 +3,7 @@ extends RichTextLabel
 @onready var final_rush_timer := $FinalRushTimer
 
 #when you lose via score
-signal score_lose
+signal player_lose
 
 var score = 300
 
@@ -24,6 +24,6 @@ func update_score(change: int):
 		
 	elif score <= 0:
 		score = 0
-		score_lose.emit()
+		player_lose.emit()
 		
 	text = String.num(score, 0)

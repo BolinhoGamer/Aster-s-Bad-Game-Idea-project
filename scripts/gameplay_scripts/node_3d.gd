@@ -88,7 +88,6 @@ enum night_end{
 }
 
 var exit : int
-var score := 300
 var exiting: bool = false
 
 
@@ -201,11 +200,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			get_tree().change_scene_to_file("res://scenes/end_shift_screen.tscn")
 
 
-func _on_customers_manager_update_score_counter(new_score: int) -> void:
-	score = new_score
-	if new_score <= 0:
-		animationplayer.play("transition screen fade in")
-		exit = night_end.lose
+func _on_score_counter_player_lose() -> void:
+	animationplayer.play("transition screen fade in")
+	exit = night_end.lose
 
 
 func _on_final_rush_timer_timeout() -> void:
