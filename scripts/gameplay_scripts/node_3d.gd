@@ -77,16 +77,20 @@ var table_data: = {
 }
 
 var walk_tween: Tween
+
+# (Cake) shouldn't this be "day_end" since it's a day shift?
 enum night_end{
 	lose,
 	win,
 	main_menu_pause,
-	restart_pause
+	restart_pause,
+	end_shift
 }
 
 var exit : int
-
 var score := 300
+var exiting: bool = false
+
 
 func _ready() -> void:
 	walk_player("default")
@@ -193,6 +197,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		elif exit == night_end.restart_pause:
 			get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
+		elif exit == night_end.end_shift:
+			get_tree().change_scene_to_file("res://scenes/end_shift_screen.tscn")
 
 
 func _on_customers_manager_update_score_counter(new_score: int) -> void:
@@ -203,8 +209,18 @@ func _on_customers_manager_update_score_counter(new_score: int) -> void:
 
 
 func _on_final_rush_timer_timeout() -> void:
+	# This mechanism prevents this function from incrementing the shift more than once
+	if exiting: return
+	exiting = true
+	
 	animationplayer.play("transition screen fade in")
-	exit = night_end.win
+	GlobalScript.shifts += 1
+	
+	if GlobalScript.shifts == 4:
+		exit = night_end.win
+	
+	else:
+		exit = night_end.end_shift
 
 
 func _on_main_menu_button_pressed() -> void:
