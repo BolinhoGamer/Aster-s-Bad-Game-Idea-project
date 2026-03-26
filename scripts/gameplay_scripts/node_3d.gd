@@ -39,11 +39,11 @@ var table_data: = {
 		"currentCustomersSeated": 0
 	},
 	"2": {
-		"maxSize": 4,
+		"maxSize": 8,
 		"currentCustomersSeated": 0
 	},
 	"3": {
-		"maxSize": 4,
+		"maxSize":3,
 		"currentCustomersSeated": 0
 	},
 	"4": {
@@ -51,29 +51,29 @@ var table_data: = {
 		"currentCustomersSeated": 0
 	},
 	"5": {
-		"maxSize": 2,
-		"currentCustomersSeated": 0
-	},
-	"6": {
-		"maxSize": 8,
-		"currentCustomersSeated": 0
-	},
-	"7": {
-		"maxSize": 8,
-		"currentCustomersSeated": 0
-	},
-	"8": {
 		"maxSize": 4,
 		"currentCustomersSeated": 0
 	},
-	"9": {
-		"maxSize": 4,
-		"currentCustomersSeated": 0
-	},
-	"0": {
-		"maxSize": 4,
-		"currentCustomersSeated": 0
-	}
+		#"6": {
+		#"maxSize": 8,
+		#"currentCustomersSeated": 0
+	#},
+	#"7": {
+		#"maxSize": 8,
+		#"currentCustomersSeated": 0
+	#},
+	#"8": {
+		#"maxSize": 4,
+		#"currentCustomersSeated": 0
+	#},
+	#"9": {
+		#"maxSize": 4,
+		#"currentCustomersSeated": 0
+	#},
+	#"0": {
+		#"maxSize": 4,
+		#"currentCustomersSeated": 0
+	#}
 }
 
 var walk_tween: Tween
@@ -154,10 +154,16 @@ func _input(event: InputEvent) -> void:
 
 func walk_player(target: String):
 	if target in ["computer", "default", "paper"]:
+		if target != "paper":
+			$CanvasLayer/PaperUI.hide()
 		walk_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		walk_tween.tween_property($Camera3D, "position", camera_positions.get(target).position, MOVEMENT_SPEED)
 		walk_tween.parallel().tween_property($Camera3D, "rotation_degrees", camera_positions.get(target).rotation, MOVEMENT_SPEED)
 		current_position = positions.get(target)
+		await walk_tween.finished
+		if target == "paper":
+			$CanvasLayer/PaperUI.show()
+
 
 
 

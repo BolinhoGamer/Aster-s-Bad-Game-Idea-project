@@ -1,3 +1,6 @@
+Sprite2D
+Button
+Control
 Label3D
 Sprite3D
 TextureRect
@@ -8,8 +11,4 @@ Window
 CheckBox
 Tree
 Panel
-Control
 Container
-Sprite2D
-HBoxContainer
-AudioStreamPlayer3D

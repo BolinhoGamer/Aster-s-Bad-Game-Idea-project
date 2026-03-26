@@ -18,6 +18,7 @@ var current_customer = null
 
 func _ready() -> void:
 	customer_spawn_loop()
+	update_table_checks()
 	
 func customer_spawn_loop() -> void:
 	await get_tree().create_timer(1).timeout
@@ -63,16 +64,16 @@ func _input(event: InputEvent) -> void:
 				customer_go_to_table(4, current_customer.customer_data.amount_of_people)
 			elif event.is_action("5"):
 				customer_go_to_table(5, current_customer.customer_data.amount_of_people)
-			elif event.is_action("6"):
-				customer_go_to_table(6, current_customer.customer_data.amount_of_people)
-			elif event.is_action("7"):
-				customer_go_to_table(7, current_customer.customer_data.amount_of_people)
-			elif event.is_action("8"):
-				customer_go_to_table(8, current_customer.customer_data.amount_of_people)
-			elif event.is_action("9"):
-				customer_go_to_table(9, current_customer.customer_data.amount_of_people)
-			elif event.is_action("0"):
-				customer_go_to_table(0, current_customer.customer_data.amount_of_people)
+			#elif event.is_action("6"):
+				#customer_go_to_table(6, current_customer.customer_data.amount_of_people)
+			#elif event.is_action("7"):
+				#customer_go_to_table(7, current_customer.customer_data.amount_of_people)
+			#elif event.is_action("8"):
+				#customer_go_to_table(8, current_customer.customer_data.amount_of_people)
+			#elif event.is_action("9"):
+				#customer_go_to_table(9, current_customer.customer_data.amount_of_people)
+			#elif event.is_action("0"):
+				#customer_go_to_table(0, current_customer.customer_data.amount_of_people)
 			
 		if event.is_action("make customer leave") :
 			customer_wait_timer.stop()
@@ -122,8 +123,42 @@ func _on_customer_wait_timer_timeout() -> void:
 func customer_go_to_table(table_index, amount_of_people):
 	var current_table_data = $"..".table_data[str(table_index)]
 	if amount_of_people <= current_table_data.maxSize and current_table_data.currentCustomersSeated == 0:
-		print("succesfully moved customers to table")
+		print("succesfully moved customers to table: " + str(amount_of_people))
 		$"..".table_data[str(table_index)].currentCustomersSeated = amount_of_people
 		_on_customer_wait_timer_timeout()
 	else:
-		print("failed to move customers to table")
+		print("failed to move customers to table: " + str(amount_of_people))
+	
+	update_table_checks()
+
+func update_table_checks():
+	for x in 5:
+		if $"..".table_data.get(str(x+1)).currentCustomersSeated != 0:
+			$"../CanvasLayer/PaperUI".get_child(x).show()
+		else:
+			$"../CanvasLayer/PaperUI".get_child(x).hide()
+
+
+func _on_table_button_1_pressed() -> void:
+	kick_out_customer_at_table(1)
+
+func _on_table_button_2_pressed() -> void:
+	kick_out_customer_at_table(2)
+
+func _on_table_button_3_pressed() -> void:
+	kick_out_customer_at_table(3)
+
+func _on_table_button_4_pressed() -> void:
+	kick_out_customer_at_table(4)
+
+func _on_table_button_5_pressed() -> void:
+	kick_out_customer_at_table(5)
+
+
+func kick_out_customer_at_table(table: int):
+	var targetCustomersSeated = $"..".table_data.get(str(table)).currentCustomersSeated
+	if targetCustomersSeated == 0:
+		return
+	_on_score_change(-10 * targetCustomersSeated)
+	$"..".table_data.get(str(table)).currentCustomersSeated = 0
+	update_table_checks()

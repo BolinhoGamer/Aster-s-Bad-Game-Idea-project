@@ -53,7 +53,7 @@ wait_time = 2.0
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1862172474]
 
 [node name="SpeechBubble" type="Sprite3D" parent="." unique_id=8023015]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28992736, 0.44857788, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28992736, 0.919256, 0)
 centered = false
 billboard = 2
 texture = ExtResource("3_8qg4y")

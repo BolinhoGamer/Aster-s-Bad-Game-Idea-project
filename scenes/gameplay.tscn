@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g3wwknmt3m5t" path="res://assets/images/Untitled_Artwork2.png" id="6_bhmdk"]
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="6_din8e"]
 [ext_resource type="Script" uid="uid://cfwttc8yi4pit" path="res://scripts/main_menu_scripts/debug_text.gd" id="7_4bh5q"]
+[ext_resource type="Texture2D" uid="uid://cy51i7b0m1gc0" path="res://assets/images/Untitled_Artwork3.png" id="7_m6b5a"]
 [ext_resource type="Script" uid="uid://bcdmyaaxc4t2u" path="res://scripts/gameplay_scripts/on_screen_ui.gd" id="8_hbo4f"]
 [ext_resource type="Script" uid="uid://cqqkb122020ih" path="res://scripts/gameplay_scripts/pause_menu.gd" id="11_qixtg"]
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://scripts/main_menu_scripts/menu_button_super.gd" id="12_nt65e"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dn33svppxhx8c" path="res://star.tres" id="16_407ns"]
 [ext_resource type="Script" uid="uid://d1o11c4h7llud" path="res://scenes/sound_manager.gd" id="17_pv71h"]
 [ext_resource type="AudioStream" uid="uid://dskao5p7newt0" path="res://assets/sounds/rain-not-from-pixabay.mp3" id="18_m6b5a"]
+[ext_resource type="Texture2D" uid="uid://c6guel0y3cds" path="res://assets/images/Schermafbeelding 2026-03-26 093758.png" id="18_mesn4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -34,6 +36,10 @@ region = Rect2(1306.5436, 87.45269, 1298.432, 1055.9935)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5y6v"]
 atlas = ExtResource("6_bhmdk")
 region = Rect2(1228.7407, 742.205, 1517.7671, 908.9046)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mesn4"]
+atlas = ExtResource("7_m6b5a")
+region = Rect2(332, 305, 2424, 2167)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhmdk"]
 atlas = ExtResource("6_bhmdk")
@@ -304,6 +310,10 @@ func walk(target_queue_position: int):
 atlas = ExtResource("6_bhmdk")
 region = Rect2(1352, 2247, 290, 593)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_525vb"]
+atlas = ExtResource("7_m6b5a")
+region = Rect2(739, 2526, 299, 343)
+
 [node name="Main" type="Node3D" unique_id=1458901737]
 script = ExtResource("1_noarx")
 
@@ -339,12 +349,12 @@ transform = Transform3D(1, 4.3702954e-08, 4.4569603e-08, -4.370296e-08, -0.01963
 texture = SubResource("AtlasTexture_s5y6v")
 
 [node name="Sprite3D4" type="Sprite3D" parent="." unique_id=150005623]
-transform = Transform3D(-8.742278e-09, 0.4, -8.742278e-09, 0, -1.7484556e-08, -0.2, -0.2, -1.7484556e-08, 3.821371e-16, -2.695, 1.04, 0.22884035)
+transform = Transform3D(-1.0927848e-09, -0.025, -1.0927848e-09, 0, -1.0927848e-09, 0.025, -0.025, 1.0927848e-09, 4.7767136e-17, -2.695, 1.04, 0.22884035)
 render_priority = 2
-texture = ExtResource("1_a202f")
+texture = SubResource("AtlasTexture_mesn4")
 
 [node name="Sprite3D" type="Sprite3D" parent="Sprite3D4" unique_id=2104943626]
-transform = Transform3D(-0.050000004, 7.54979e-09, 1.323489e-23, -7.54979e-09, -0.050000004, -4.440892e-16, -7.2791894e-23, -4.440892e-16, 0.050000004, 1.1890858, 0, 0)
+transform = Transform3D(0.6878449, -0.1298826, -1.4039959e-08, 0.1298826, 0.6878449, -2.7321534e-09, 1.4303105e-08, 7.965564e-11, 0.7, 15.923032, 0, 0)
 texture = SubResource("AtlasTexture_bhmdk")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2028863731]
@@ -521,6 +531,94 @@ texture = ExtResource("16_407ns")
 layout_mode = 2
 texture = SubResource("AtlasTexture_407ns")
 
+[node name="PaperUI" type="Control" parent="CanvasLayer" unique_id=1629371889]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TableButton1" type="Button" parent="CanvasLayer/PaperUI" unique_id=1619385603]
+z_index = 1
+layout_mode = 0
+offset_left = 384.0
+offset_top = 151.0
+offset_right = 476.0
+offset_bottom = 261.0
+text = "1"
+flat = true
+
+[node name="Check" type="Sprite2D" parent="CanvasLayer/PaperUI/TableButton1" unique_id=326294956]
+position = Vector2(45.999996, 53.999996)
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_525vb")
+
+[node name="TableButton2" type="Button" parent="CanvasLayer/PaperUI" unique_id=825119842]
+z_index = 1
+layout_mode = 0
+offset_left = 492.0
+offset_top = 207.0
+offset_right = 704.0
+offset_bottom = 317.0
+text = "2"
+flat = true
+
+[node name="Check" type="Sprite2D" parent="CanvasLayer/PaperUI/TableButton2" unique_id=768589368]
+position = Vector2(104, 49.999996)
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_525vb")
+
+[node name="TableButton3" type="Button" parent="CanvasLayer/PaperUI" unique_id=1704006630]
+z_index = 1
+layout_mode = 0
+offset_left = 374.0
+offset_top = 275.0
+offset_right = 482.0
+offset_bottom = 362.0
+text = "3"
+flat = true
+
+[node name="Check" type="Sprite2D" parent="CanvasLayer/PaperUI/TableButton3" unique_id=1190844750]
+position = Vector2(48.999996, 42.999996)
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_525vb")
+
+[node name="TableButton4" type="Button" parent="CanvasLayer/PaperUI" unique_id=1482493527]
+z_index = 1
+layout_mode = 0
+offset_left = 432.0
+offset_top = 363.0
+offset_right = 560.0
+offset_bottom = 430.0
+text = "4"
+flat = true
+
+[node name="Check" type="Sprite2D" parent="CanvasLayer/PaperUI/TableButton4" unique_id=1547810323]
+position = Vector2(59.999996, 35.999996)
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_525vb")
+
+[node name="TableButton5" type="Button" parent="CanvasLayer/PaperUI" unique_id=1188746106]
+z_index = 1
+layout_mode = 0
+offset_left = 578.0
+offset_top = 341.0
+offset_right = 742.0
+offset_bottom = 451.0
+text = "5"
+flat = true
+
+[node name="Check" type="Sprite2D" parent="CanvasLayer/PaperUI/TableButton5" unique_id=900597827]
+position = Vector2(78, 55.999996)
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_525vb")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/PaperUI" unique_id=386103205]
+visible = false
+scale = Vector2(0.8433382, 0.84375)
+texture = ExtResource("18_mesn4")
+centered = false
+
 [node name="SoundManager" type="Node" parent="." unique_id=599895019]
 script = ExtResource("17_pv71h")
 
@@ -542,5 +640,10 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/RestartShiftButton" to="." method="_on_restart_shift_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/QuitGameButton" to="CanvasLayer/OnScreenUI/PauseMenu" method="_on_exit_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PaperUI/TableButton1" to="CustomersManager" method="_on_table_button_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/PaperUI/TableButton2" to="CustomersManager" method="_on_table_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/PaperUI/TableButton3" to="CustomersManager" method="_on_table_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/PaperUI/TableButton4" to="CustomersManager" method="_on_table_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/PaperUI/TableButton5" to="CustomersManager" method="_on_table_button_5_pressed"]
 [connection signal="finished" from="SoundManager/RainSoundEffect" to="SoundManager" method="_on_rain_sound_effect_finished"]
 [connection signal="timeout" from="SoundManager/RainTimer" to="SoundManager" method="_on_rain_timer_timeout"]
