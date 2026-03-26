@@ -20,7 +20,7 @@ var last_event = events.desk
 var current_position = positions.default
 var camera_positions = {
 	"computer": {
-		"position": Vector3(-1.8, 1.66, -2.3),
+		"position": Vector3(-2.1, 1.55, -2.3),
 		"rotation": Vector3(0, 90, 0),
 	},
 	"default": {
@@ -156,6 +156,8 @@ func walk_player(target: String):
 	if target in ["computer", "default", "paper"]:
 		if target != "paper":
 			$CanvasLayer/PaperUI.hide()
+		if target != "computer":
+			$CanvasLayer/ComputerUI.hide()
 		walk_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		walk_tween.tween_property($Camera3D, "position", camera_positions.get(target).position, MOVEMENT_SPEED)
 		walk_tween.parallel().tween_property($Camera3D, "rotation_degrees", camera_positions.get(target).rotation, MOVEMENT_SPEED)
@@ -163,7 +165,8 @@ func walk_player(target: String):
 		await walk_tween.finished
 		if target == "paper":
 			$CanvasLayer/PaperUI.show()
-
+		if target == "computer":
+			$CanvasLayer/ComputerUI.show()
 
 
 

@@ -18,8 +18,11 @@
 [ext_resource type="Script" uid="uid://c2m036v8rtp57" path="res://scenes/star_container.gd" id="15_s5y6v"]
 [ext_resource type="Texture2D" uid="uid://dn33svppxhx8c" path="res://star.tres" id="16_407ns"]
 [ext_resource type="Script" uid="uid://d1o11c4h7llud" path="res://scenes/sound_manager.gd" id="17_pv71h"]
+[ext_resource type="Texture2D" uid="uid://cle3j3ke8srro" path="res://assets/images/Schermafbeelding 2026-03-26 170552.png" id="18_525vb"]
 [ext_resource type="AudioStream" uid="uid://dskao5p7newt0" path="res://assets/sounds/rain-not-from-pixabay.mp3" id="18_m6b5a"]
 [ext_resource type="Texture2D" uid="uid://c6guel0y3cds" path="res://assets/images/Schermafbeelding 2026-03-26 093758.png" id="18_mesn4"]
+[ext_resource type="Texture2D" uid="uid://dhme2rlopccpw" path="res://assets/images/Untitled_Artwork_4.png" id="19_25e7j"]
+[ext_resource type="Shader" uid="uid://bu5qaghikldru" path="res://scenes/glitch.gdshader" id="20_t4x03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -310,6 +313,22 @@ func walk(target_queue_position: int):
 atlas = ExtResource("6_bhmdk")
 region = Rect2(1352, 2247, 290, 593)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4x03"]
+atlas = ExtResource("19_25e7j")
+region = Rect2(1580, 151, 672, 637)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucu43"]
+shader = ExtResource("20_t4x03")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25e7j"]
+atlas = ExtResource("19_25e7j")
+region = Rect2(2319, 129, 164, 155)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_525vb"]
 atlas = ExtResource("7_m6b5a")
 region = Rect2(739, 2526, 299, 343)
@@ -333,7 +352,7 @@ transparent = false
 texture = SubResource("AtlasTexture_4bh5q")
 
 [node name="Computer" type="Sprite3D" parent="." unique_id=1365186600]
-transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -3.0508041, 1.537897, -2.4641595)
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -2.74159, 1.537897, -2.4641595)
 texture = SubResource("AtlasTexture_din8e")
 script = ExtResource("4_e124b")
 
@@ -345,7 +364,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="Sprite3D" type="Sprite3D" parent="Computer" unique_id=1864430058]
-transform = Transform3D(1, 4.3702954e-08, 4.4569603e-08, -4.370296e-08, -0.019633744, 0.99980724, 4.4569603e-08, -0.99980724, -0.019633744, -1.9073486e-06, -5.030261, 4.135538)
+transform = Transform3D(1, 4.3702954e-08, 4.4569603e-08, -4.370296e-08, -0.019633744, 0.99980724, 4.4569603e-08, -0.99980724, -0.019633744, -1.9073486e-06, -5.030261, 2.081215)
 texture = SubResource("AtlasTexture_s5y6v")
 
 [node name="Sprite3D4" type="Sprite3D" parent="." unique_id=150005623]
@@ -530,6 +549,44 @@ texture = ExtResource("16_407ns")
 [node name="HalfStar" type="TextureRect" parent="CanvasLayer/OnScreenUI/StarContainer" unique_id=1199573194]
 layout_mode = 2
 texture = SubResource("AtlasTexture_407ns")
+
+[node name="ComputerUI" type="Control" parent="CanvasLayer" unique_id=786637040]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ComputerUI" unique_id=422145957]
+scale = Vector2(0.8433382, 0.84375)
+texture = ExtResource("18_525vb")
+centered = false
+
+[node name="Control" type="Control" parent="CanvasLayer/ComputerUI" unique_id=736492703]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=532448076]
+position = Vector2(343, 446.00003)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_t4x03")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=433190122]
+position = Vector2(343, 446.00003)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_t4x03")
+centered = false
+
+[node name="KeyButton1" type="Button" parent="CanvasLayer/ComputerUI/Control" unique_id=911694099]
+material = SubResource("ShaderMaterial_ucu43")
+layout_mode = 0
+offset_left = 647.0
+offset_top = 389.0
+offset_right = 819.0
+offset_bottom = 552.0
+icon = SubResource("AtlasTexture_25e7j")
+flat = true
 
 [node name="PaperUI" type="Control" parent="CanvasLayer" unique_id=1629371889]
 visible = false

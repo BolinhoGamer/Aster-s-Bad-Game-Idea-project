@@ -125,35 +125,41 @@ func customer_go_to_table(table_index, amount_of_people):
 	if amount_of_people <= current_table_data.maxSize and current_table_data.currentCustomersSeated == 0:
 		print("succesfully moved customers to table: " + str(amount_of_people))
 		$"..".table_data[str(table_index)].currentCustomersSeated = amount_of_people
-		_on_customer_wait_timer_timeout()
+		current_customer._on_customer_going_in()
 	else:
 		print("failed to move customers to table: " + str(amount_of_people))
-	
+		_on_customer_wait_timer_timeout()
 	update_table_checks()
 
 func update_table_checks():
 	for x in 5:
 		if $"..".table_data.get(str(x+1)).currentCustomersSeated != 0:
-			$"../CanvasLayer/PaperUI".get_child(x).show()
+			$"../CanvasLayer/PaperUI".get_child(x).get_child(0).show()
 		else:
-			$"../CanvasLayer/PaperUI".get_child(x).hide()
+			$"../CanvasLayer/PaperUI".get_child(x).get_child(0).hide()
 
 
 func _on_table_button_1_pressed() -> void:
-	kick_out_customer_at_table(1)
+	check_if_taken(1)
 
 func _on_table_button_2_pressed() -> void:
-	kick_out_customer_at_table(2)
+	check_if_taken(2)
 
 func _on_table_button_3_pressed() -> void:
-	kick_out_customer_at_table(3)
+	check_if_taken(3)
 
 func _on_table_button_4_pressed() -> void:
-	kick_out_customer_at_table(4)
+	check_if_taken(4)
 
 func _on_table_button_5_pressed() -> void:
-	kick_out_customer_at_table(5)
+	check_if_taken(5)
 
+func check_if_taken(table):
+	var targetCustomersSeated = $"..".table_data.get(str(table)).currentCustomersSeated
+	if targetCustomersSeated == 0:
+		customer_go_to_table(table, current_customer.customer_data.amount_of_people)
+	else:
+		kick_out_customer_at_table(table)
 
 func kick_out_customer_at_table(table: int):
 	var targetCustomersSeated = $"..".table_data.get(str(table)).currentCustomersSeated

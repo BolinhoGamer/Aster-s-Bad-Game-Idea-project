@@ -12,3 +12,4 @@ res://scripts/gameplay_scripts/score_counter.gd
 res://scenes/customer.tscn
 res://global_script.gd
 res://scripts/main_menu_scripts/menu_play_button.gd
+res://scenes/glitch.gdshader

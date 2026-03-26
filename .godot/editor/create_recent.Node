@@ -1,8 +1,9 @@
-Sprite2D
+RichTextLabel
 Button
 Control
-Label3D
 Sprite3D
+Sprite2D
+Label3D
 TextureRect
 Timer
 Node
