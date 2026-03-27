@@ -447,6 +447,18 @@ offset = Vector2(-190, 0)
 billboard = 2
 texture = ExtResource("6_din8e")
 
+[node name="TableTimers" type="Node" parent="CustomersManager" unique_id=789837779]
+
+[node name="TableTimer1" type="Timer" parent="CustomersManager/TableTimers" unique_id=1579064763]
+
+[node name="TableTimer2" type="Timer" parent="CustomersManager/TableTimers" unique_id=2115084467]
+
+[node name="TableTimer3" type="Timer" parent="CustomersManager/TableTimers" unique_id=529916422]
+
+[node name="TableTimer4" type="Timer" parent="CustomersManager/TableTimers" unique_id=119384536]
+
+[node name="TableTimer5" type="Timer" parent="CustomersManager/TableTimers" unique_id=871516631]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1091460538]
 follow_viewport_enabled = true
 
@@ -734,6 +746,11 @@ pitch_scale = 1.1
 [connection signal="update_score_counter" from="CustomersManager" to="CanvasLayer/OnScreenUI/ScoreCounter" method="_on_customers_manager_update_score_counter"]
 [connection signal="timeout" from="CustomersManager/CustomerWaitTimer" to="CustomersManager" method="_on_customer_wait_timer_timeout"]
 [connection signal="timeout" from="CustomersManager/FinalRushTimer" to="." method="_on_final_rush_timer_timeout"]
+[connection signal="timeout" from="CustomersManager/TableTimers/TableTimer1" to="CustomersManager" method="_on_table_timer_1_timeout"]
+[connection signal="timeout" from="CustomersManager/TableTimers/TableTimer2" to="CustomersManager" method="_on_table_timer_2_timeout"]
+[connection signal="timeout" from="CustomersManager/TableTimers/TableTimer3" to="CustomersManager" method="_on_table_timer_3_timeout"]
+[connection signal="timeout" from="CustomersManager/TableTimers/TableTimer4" to="CustomersManager" method="_on_table_timer_4_timeout"]
+[connection signal="timeout" from="CustomersManager/TableTimers/TableTimer5" to="CustomersManager" method="_on_table_timer_5_timeout"]
 [connection signal="player_lose" from="CanvasLayer/OnScreenUI/ScoreCounter" to="." method="_on_score_counter_player_lose"]
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/ResumeGameButton" to="CanvasLayer/OnScreenUI/PauseMenu" method="_on_resume_game_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnScreenUI/PauseMenu/RestartShiftButton" to="." method="_on_restart_shift_button_pressed"]

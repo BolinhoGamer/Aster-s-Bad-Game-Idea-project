@@ -129,6 +129,8 @@ func customer_go_to_table(table_index, amount_of_people):
 	if amount_of_people <= current_table_data.maxSize and current_table_data.currentCustomersSeated == 0:
 		print("succesfully moved customers to table: " + str(amount_of_people))
 		$"..".table_data[str(table_index)].currentCustomersSeated = amount_of_people
+		var time_before_customer_leaves = randf_range(3, 5) * ($"..".table_data[str(table_index)].maxSize + amount_of_people)
+		$TableTimers.find_child("TableTimer" + str(table_index)).start(time_before_customer_leaves)
 		_on_succesfully_question_awnsered()
 	else:
 		print("failed to move customers to table: " + str(amount_of_people))
@@ -174,4 +176,26 @@ func kick_out_customer_at_table(table: int):
 	## lose 10 score per customer kicked out
 	emit_signal("update_score_counter", -10 * targetCustomersSeated)
 	$"..".table_data.get(str(table)).currentCustomersSeated = 0
+	update_table_checks()
+
+
+func _on_table_timer_1_timeout() -> void:
+	$"..".table_data["1"].currentCustomersSeated = 0
+	update_table_checks()
+
+
+func _on_table_timer_2_timeout() -> void:
+	$"..".table_data["2"].currentCustomersSeated = 0
+	update_table_checks()
+
+func _on_table_timer_3_timeout() -> void:
+	$"..".table_data["3"].currentCustomersSeated = 0
+	update_table_checks()
+
+func _on_table_timer_4_timeout() -> void:
+	$"..".table_data["4"].currentCustomersSeated = 0
+	update_table_checks()
+
+func _on_table_timer_5_timeout() -> void:
+	$"..".table_data["5"].currentCustomersSeated= 0
 	update_table_checks()
