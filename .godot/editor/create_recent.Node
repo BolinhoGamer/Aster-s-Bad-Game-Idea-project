@@ -1,3 +1,4 @@
+Node3D
 RichTextLabel
 Button
 Control
@@ -12,4 +13,3 @@ Window
 CheckBox
 Tree
 Panel
-Container

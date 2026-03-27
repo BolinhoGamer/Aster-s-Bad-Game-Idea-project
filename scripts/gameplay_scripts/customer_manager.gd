@@ -12,7 +12,7 @@ extends Node3D
 
 signal customer_leaving()
 signal customer_going_in()
-signal update_score_counter(new_score: int)
+signal update_score_counter(change: int)
 
 var current_customer = null
 

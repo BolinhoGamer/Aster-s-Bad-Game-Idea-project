@@ -10,7 +10,7 @@ var score = 300
 func _on_customers_manager_update_score_counter(change: int) -> void:
 	update_score(change)
 
-func _on_child_ghost_manager_update_score_counter(change: int) -> void:
+func _on_ghost_child_manager_update_score_counter(change: int) -> void:
 	update_score(change)
 
 
