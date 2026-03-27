@@ -1,3 +1,4 @@
+AudioStreamPlayer
 Node3D
 RichTextLabel
 Button
@@ -8,8 +9,6 @@ Label3D
 TextureRect
 Timer
 Node
-AudioStreamPlayer
 Window
 CheckBox
 Tree
-Panel

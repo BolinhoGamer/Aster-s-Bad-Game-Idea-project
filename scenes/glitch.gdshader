@@ -7,8 +7,7 @@ shader_type canvas_item;
 
 // 振動の強さ
 uniform float shake_power = 0.03;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
-// 振動率
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;// 振動率
 uniform float shake_rate : hint_range( 0.0, 1.0 ) = 0.2;
 // 振動速度
 uniform float shake_speed = 5.0;

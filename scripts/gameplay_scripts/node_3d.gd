@@ -95,29 +95,6 @@ func _ready() -> void:
 	walk_player("default")
 	animationplayer.play("transition screen fade out")
 
-#func go_to_desk():
-	#if last_event == events.customers:
-		#animationplayer.play("camera movement/customers_to_desk_new")
-	#
-	#elif last_event == events.default:
-		#animationplayer.play("camera movement/default_to_desk")
-#
-#
-#func go_to_customers():
-	#if last_event == events.desk:
-		#animationplayer.play("camera movement/desk_to_customers_new")
-	#
-	#elif last_event == events.default:
-		#animationplayer.play("camera movement/default_to_customers")
-#
-#
-#func go_to_default():
-	#if last_event == events.desk:
-		#animationplayer.play("camera movement/desk_to_default")
-	#
-	#elif last_event == events.customers:
-		#animationplayer.play("camera movement/customers_to_default")
-
 const MOVEMENT_SPEED = 0.6
 #func _input(event: InputEvent) -> void:
 	## Only accepts inputs if the camera is stopped, so it doesn't snaps
@@ -145,10 +122,8 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action("move to computer"):
 		walk_player("computer")
-		#walk_customers()
 	elif event.is_action("move to client"):
 		walk_player("default")
-		
 	elif event.is_action("move to paper"):
 		walk_player("paper")
 
@@ -168,31 +143,6 @@ func walk_player(target: String):
 		if target == "computer":
 			$CanvasLayer/ComputerUI.show()
 
-
-
-var dic = {
-		"QueuePosition0": null,
-		"QueuePosition1": null,
-		"QueuePosition2": null,
-		"QueuePosition3": null,
-		"QueuePosition4": null,
-		#"QueuePosition5": null,
-	}
-
-#func walk_customers():
-	#
-	#for x in $CustomersManager/CustomerHolder.get_children():
-		#
-		#var customer_current_position = x.queue_position
-		#var customer_target_position = customer_current_position - 1 
-		#if customer_target_position != -1 and!dic["QueuePosition" + str(customer_target_position)]:
-			#x.walk(customer_target_position)
-			#dic["QueuePosition" + str(customer_target_position)] = x
-			#dic["QueuePosition" + str(customer_current_position)] = null
-#
-#
-#func _on_customer_timer_timeout() -> void:
-	#walk_customers()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

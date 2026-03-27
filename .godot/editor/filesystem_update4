@@ -13,3 +13,4 @@ res://scenes/customer.tscn
 res://global_script.gd
 res://scripts/main_menu_scripts/menu_play_button.gd
 res://scenes/glitch.gdshader
+res://scripts/gameplay_scripts/ghost_child_manager.gd

@@ -25,12 +25,13 @@ func ghost_child_spawn_loop() -> void:
 		ghost_child_spawn_loop()
 
 var child_ghost_loc : eComputerState
+
 func ghost_child_spawn() -> void:
 	if randf_range(0, 1) <= 0.5:
 		child_ghost_loc = eComputerState.e_cmp_0
 	else:
 		child_ghost_loc = eComputerState.e_cmp_3
-	
+	$"../../SoundManager/CryingChild".play()
 	is_ghost_child_crying = true
 	ghost_child_cry()
 
@@ -46,3 +47,4 @@ func ghost_child_cry() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("light camera") and computer.state == child_ghost_loc:
 		is_ghost_child_crying = false
+		$"../../SoundManager/CryingChild".stop()

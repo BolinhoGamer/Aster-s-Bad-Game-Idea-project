@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g3wwknmt3m5t" path="res://assets/images/Untitled_Artwork2.png" id="6_bhmdk"]
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="6_din8e"]
 [ext_resource type="Texture2D" uid="uid://cy51i7b0m1gc0" path="res://assets/images/Untitled_Artwork3.png" id="7_m6b5a"]
-[ext_resource type="Script" path="res://scripts/gameplay_scripts/ghost_child_manager.gd" id="7_ucu43"]
+[ext_resource type="Script" uid="uid://cqt3npiytjoed" path="res://scripts/gameplay_scripts/ghost_child_manager.gd" id="7_ucu43"]
 [ext_resource type="Script" uid="uid://bcdmyaaxc4t2u" path="res://scripts/gameplay_scripts/on_screen_ui.gd" id="8_hbo4f"]
 [ext_resource type="Script" uid="uid://cqqkb122020ih" path="res://scripts/gameplay_scripts/pause_menu.gd" id="11_qixtg"]
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://scripts/main_menu_scripts/menu_button_super.gd" id="12_nt65e"]
@@ -21,8 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cle3j3ke8srro" path="res://assets/images/Schermafbeelding 2026-03-26 170552.png" id="18_525vb"]
 [ext_resource type="AudioStream" uid="uid://dskao5p7newt0" path="res://assets/sounds/rain-not-from-pixabay.mp3" id="18_m6b5a"]
 [ext_resource type="Texture2D" uid="uid://c6guel0y3cds" path="res://assets/images/Schermafbeelding 2026-03-26 093758.png" id="18_mesn4"]
-[ext_resource type="Texture2D" uid="uid://dhme2rlopccpw" path="res://assets/images/Untitled_Artwork_4.png" id="19_25e7j"]
-[ext_resource type="Shader" uid="uid://bu5qaghikldru" path="res://scenes/glitch.gdshader" id="20_t4x03"]
+[ext_resource type="Texture2D" uid="uid://cbymsqa6istif" path="res://assets/images/computer_map.tres" id="19_25e7j"]
+[ext_resource type="AudioStream" uid="uid://csyq3mxeeyuym" path="res://assets/sounds/Baby crying sound effect.mp3" id="23_ucu43"]
+[ext_resource type="AudioStream" uid="uid://0p8lbr54peio" path="res://assets/sounds/pen.mp3" id="24_cuhxg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocj2s"]
 atlas = ExtResource("3_ocj2s")
@@ -317,17 +318,33 @@ region = Rect2(1352, 2247, 290, 593)
 atlas = ExtResource("19_25e7j")
 region = Rect2(1580, 151, 672, 637)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucu43"]
-shader = ExtResource("20_t4x03")
-shader_parameter/shake_power = 0.03
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.01
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t4x03"]
+load_path = "res://.godot/imported/Untitled_Artwork_4.png-4194db2a2ac58a03f4ec662bb0196653.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_25e7j"]
-atlas = ExtResource("19_25e7j")
-region = Rect2(2319, 129, 164, 155)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucu43"]
+atlas = SubResource("CompressedTexture2D_t4x03")
+region = Rect2(2308, 541, 164, 155)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cuhxg"]
+load_path = "res://.godot/imported/Untitled_Artwork_4.png-4194db2a2ac58a03f4ec662bb0196653.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrqbj"]
+atlas = SubResource("CompressedTexture2D_cuhxg")
+region = Rect2(2517, 543, 182, 178)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gm2mb"]
+load_path = "res://.godot/imported/Untitled_Artwork_4.png-4194db2a2ac58a03f4ec662bb0196653.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhs7r"]
+atlas = SubResource("CompressedTexture2D_gm2mb")
+region = Rect2(2315, 752, 168, 144)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_28f34"]
+load_path = "res://.godot/imported/Untitled_Artwork_4.png-4194db2a2ac58a03f4ec662bb0196653.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v6uj"]
+atlas = SubResource("CompressedTexture2D_28f34")
+region = Rect2(2539, 751, 186, 167)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_525vb"]
 atlas = ExtResource("7_m6b5a")
@@ -555,6 +572,7 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_407ns")
 
 [node name="ComputerUI" type="Control" parent="CanvasLayer" unique_id=786637040]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -571,27 +589,35 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=532448076]
+[node name="ComputerMap" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=532448076]
 position = Vector2(343, 446.00003)
 scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_t4x03")
 centered = false
 
-[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=433190122]
-position = Vector2(343, 446.00003)
-scale = Vector2(0.2, 0.2)
-texture = SubResource("AtlasTexture_t4x03")
+[node name="QKey" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=150234203]
+position = Vector2(677, 431)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_ucu43")
 centered = false
 
-[node name="KeyButton1" type="Button" parent="CanvasLayer/ComputerUI/Control" unique_id=911694099]
-material = SubResource("ShaderMaterial_ucu43")
-layout_mode = 0
-offset_left = 647.0
-offset_top = 389.0
-offset_right = 819.0
-offset_bottom = 552.0
-icon = SubResource("AtlasTexture_25e7j")
-flat = true
+[node name="EKey" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=886911891]
+position = Vector2(760, 428)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_vrqbj")
+centered = false
+
+[node name="WKey" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=1274629052]
+position = Vector2(667, 510)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_jhs7r")
+centered = false
+
+[node name="RKey" type="Sprite2D" parent="CanvasLayer/ComputerUI/Control" unique_id=222661518]
+position = Vector2(746, 514)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_3v6uj")
+centered = false
 
 [node name="PaperUI" type="Control" parent="CanvasLayer" unique_id=1629371889]
 visible = false
@@ -687,11 +713,21 @@ script = ExtResource("17_pv71h")
 [node name="RainSoundEffect" type="AudioStreamPlayer" parent="SoundManager" unique_id=1480011071]
 stream = ExtResource("18_m6b5a")
 volume_db = -26.0
+bus = &"Music"
 
 [node name="RainTimer" type="Timer" parent="SoundManager" unique_id=1288593404]
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="CryingChild" type="AudioStreamPlayer" parent="SoundManager" unique_id=1804020336]
+stream = ExtResource("23_ucu43")
+volume_db = -16.0
+bus = &"SFX"
+
+[node name="Pen" type="AudioStreamPlayer" parent="SoundManager" unique_id=1309714666]
+stream = ExtResource("24_cuhxg")
+pitch_scale = 1.1
 
 [connection signal="update_score_counter" from="Computer/GhostChildManager" to="CanvasLayer/OnScreenUI/ScoreCounter" method="_on_ghost_child_manager_update_score_counter"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
