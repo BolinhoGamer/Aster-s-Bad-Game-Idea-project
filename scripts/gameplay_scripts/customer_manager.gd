@@ -55,15 +55,15 @@ func _input(event: InputEvent) -> void:
 	if current_customer != null and is_customer_walking == false:
 		if current_customer.customer_data.question_type == "table":
 			if event.is_action("1"):
-				customer_go_to_table(1, current_customer.customer_data.amount_of_people)
+				_on_table_button_1_pressed()
 			elif event.is_action("2"):
-				customer_go_to_table(2, current_customer.customer_data.amount_of_people)
+				_on_table_button_2_pressed()
 			elif event.is_action("3"):
-				customer_go_to_table(3, current_customer.customer_data.amount_of_people)
+				_on_table_button_3_pressed()
 			elif event.is_action("4"):
-				customer_go_to_table(4, current_customer.customer_data.amount_of_people)
+				_on_table_button_4_pressed()
 			elif event.is_action("5"):
-				customer_go_to_table(5, current_customer.customer_data.amount_of_people)
+				_on_table_button_5_pressed()
 			#elif event.is_action("6"):
 				#customer_go_to_table(6, current_customer.customer_data.amount_of_people)
 			#elif event.is_action("7"):
@@ -116,16 +116,20 @@ func _on_customer_wait_timer_timeout() -> void:
 	var InputAction = InputEventAction.new()
 	InputAction.action = "make customer leave"
 	InputAction.pressed = true
-	$CustomerWaitTimer.stop()
 	Input.parse_input_event(InputAction)
 
+func _on_succesfully_question_awnsered():
+	var InputAction = InputEventAction.new()
+	InputAction.action = "make customer go inside"
+	InputAction.pressed = true
+	Input.parse_input_event(InputAction)
 
 func customer_go_to_table(table_index, amount_of_people):
 	var current_table_data = $"..".table_data[str(table_index)]
 	if amount_of_people <= current_table_data.maxSize and current_table_data.currentCustomersSeated == 0:
 		print("succesfully moved customers to table: " + str(amount_of_people))
 		$"..".table_data[str(table_index)].currentCustomersSeated = amount_of_people
-		current_customer._on_customer_going_in()
+		_on_succesfully_question_awnsered()
 	else:
 		print("failed to move customers to table: " + str(amount_of_people))
 		_on_customer_wait_timer_timeout()
@@ -155,6 +159,8 @@ func _on_table_button_5_pressed() -> void:
 	check_if_taken(5)
 
 func check_if_taken(table):
+	if !current_customer:
+		return
 	var targetCustomersSeated = $"..".table_data.get(str(table)).currentCustomersSeated
 	if targetCustomersSeated == 0:
 		customer_go_to_table(table, current_customer.customer_data.amount_of_people)
@@ -165,6 +171,7 @@ func kick_out_customer_at_table(table: int):
 	var targetCustomersSeated = $"..".table_data.get(str(table)).currentCustomersSeated
 	if targetCustomersSeated == 0:
 		return
-	_on_score_change(-10 * targetCustomersSeated)
+	## lose 10 score per customer kicked out
+	emit_signal("update_score_counter", -10 * targetCustomersSeated)
 	$"..".table_data.get(str(table)).currentCustomersSeated = 0
 	update_table_checks()

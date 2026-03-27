@@ -45,7 +45,7 @@ func _on_timer_timeout() -> void:
 		emit_signal("father_spawn")
 
 #helper function for deciding where to go
-func set_movement_vector() -> Vector3:
+func get_movement_vector() -> Vector3:
 	const GO_RIGHT_VECTOR := Vector3(0, 0, -3.5)
 	const GO_LEFT_VECTOR := Vector3(0, 0, 3.5)
 	var current_vector : Vector3
@@ -63,13 +63,13 @@ func set_movement_vector() -> Vector3:
 
 func _physics_process(_delta):
 	if is_moving:
-		velocity = set_movement_vector()
+		velocity = get_movement_vector()
 		
 		if !animation_player.is_playing():
 			animation_player.play("customer_walk")
 		
 	else:
-		velocity = Vector3.ZERO		
+		velocity = Vector3.ZERO
 
 	move_and_slide()
 

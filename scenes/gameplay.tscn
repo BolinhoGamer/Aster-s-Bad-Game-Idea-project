@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://g3wwknmt3m5t" path="res://assets/images/Untitled_Artwork2.png" id="6_bhmdk"]
 [ext_resource type="Texture2D" uid="uid://4jl7qybpw3u0" path="res://assets/images/Jonh Cauldron.png" id="6_din8e"]
 [ext_resource type="Texture2D" uid="uid://cy51i7b0m1gc0" path="res://assets/images/Untitled_Artwork3.png" id="7_m6b5a"]
-[ext_resource type="Script" uid="uid://cqt3npiytjoed" path="res://scripts/gameplay_scripts/ghost_child_manager.gd" id="7_ucu43"]
+[ext_resource type="Script" path="res://scripts/gameplay_scripts/ghost_child_manager.gd" id="7_ucu43"]
 [ext_resource type="Script" uid="uid://bcdmyaaxc4t2u" path="res://scripts/gameplay_scripts/on_screen_ui.gd" id="8_hbo4f"]
 [ext_resource type="Script" uid="uid://cqqkb122020ih" path="res://scripts/gameplay_scripts/pause_menu.gd" id="11_qixtg"]
 [ext_resource type="Script" uid="uid://d1hx6pkuxodf3" path="res://scripts/main_menu_scripts/menu_button_super.gd" id="12_nt65e"]
@@ -561,6 +561,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ComputerUI" unique_id=422145957]
+visible = false
 scale = Vector2(0.8433382, 0.84375)
 texture = ExtResource("18_525vb")
 centered = false
