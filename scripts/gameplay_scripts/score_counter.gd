@@ -1,6 +1,8 @@
 extends RichTextLabel
 
-@onready var final_rush_timer := $FinalRushTimer
+# STOP MESSING UP WITH THIS, FOR THE LOVE OF GOD, I DON'T WANT TO FIX IT AGAIN
+# I'VE FIXED IT YESTERDAY...
+@onready var final_rush_timer := $"/root/Main/CustomersManager/FinalRushTimer"
 
 #when you lose via score
 signal player_lose
